@@ -1,0 +1,58 @@
+casos de uso
+
+Nombre > Resgistro de la empresa
+Actores > Usuario
+Descripcion > el usuario registro su empresa/organizacion en el sistema llenando los campos especificos del formulario, En caso de que ya este registrado este(el sistema) indicara que ha ocurrido un error, una vez registrado podra comenzar a represemtar su empresa.
+Precondicion > la empresa del usuario no esta registrada
+Poscondiciones > ninguna
+Flujo Principal >
+	1 -> el usuario comienza a registrar su empresa/organizacion empezando por el nombre
+	2 -> el sistema se verifica sino existe una empresa/organizacion con ese nombre ya registrada en el sistem
+	3 -> el usuario completa los datos espesificos de la empresa/organizacion
+	4 -> el sistema verifica que los campos espesificos se hallan completado
+	5 -> una vez que el sistema verifico que los campos especificos estan completos se finaliza el registro, avisandole al cliente que el registro fue exitoso.
+Flujo alternativo >
+	2.a   -> el sistema informa que ya existe otra entidad con ese nombre y se le recomienda al usuario logearse
+	2.a'  -> el usuario desiste de registrarse
+
+	4.a   -> el usuario no completo los campos espesificos
+	5.a   -> el sistema le informa al usuario que debe completar los campos para completar
+	6.a   -> el usuario completa los campos del formulario [ y se vuelve al flujo original >> 4 << ]
+	6.a' -> el usuario desiste del registro
+
+
+Nombre > logeo de la empresa
+Actores > Usuario
+Descripcion > el usuario decide logearse, introduciendo el nombre de la empresa y su contraseña, el sistema verifica que el usuario exista en el sistema y luego verifica que la contraseña sea acorde a la contraseña perteneciente a ese usuario de coincidir se le da al usuario acceso al sistema para manejar esa cuenta o de fallar esta conexion se le avisa del error al usuario y se le invita a intentar de nuevo
+Precondicion > la empresa del usuario esta registrada
+Poscondiciones > ninguna
+Flujo Principal >
+	1 -> el usuario introduce el nombre de la empresa y la contraseña
+	2 -> el sistema verifica la existencia de la empresa mediante el nombre de usuario
+	3 -> el sistema verifica que la contraseña sea la misma que la almacenada en el sistema para esa empresa
+	4 -> el sistema le da acceso al usuario para manejar la cuenta
+	5 -> el usuario puede ahora comenzar a manejar su cuenta
+
+Flujo alternativo >
+	1.a -> el usuario introduce datos erroneos en el sistema(ambos erroneos o el nombre de la empresa/organizacion es erroneo y la contraseña es correcta)
+	2   -> el sistema verifica la existencia de la empresa mediante el nombre de usuario
+	4.a -> el sistema le informa al usuario que uno o ambos valores introducidos son errones y se lo invita a intentar nuevamente
+
+1.a -> el usuario introduce datos erroneos en el sistema(correcto nombre de empresa/organizacion erronea contraseña)
+	2   -> el sistema verifica la existencia de la empresa mediante el nombre de usuario
+	3   -> el sistema verifica que la contraseña sea la misma que la almacenada en el sistema para esa empresa
+	4.a -> el sistema le informa al usuario que uno o ambos valores introducidos son errones y se lo invita a intentar nuevamente
+
+Nombre > logout de la empresa
+Actores > 
+Descripcion > 
+Poscondiciones > 
+Flujo Principal >
+	1 -> 
+	2 -> 
+	3 -> 
+	4 -> 
+	5 -> 
+
+Flujo alternativo >
+	

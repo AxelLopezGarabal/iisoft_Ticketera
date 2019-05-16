@@ -1,0 +1,70 @@
+Doc. de Alcanse y vision
+
+Introduccion
+
+El Presente documento tiene como objetivo documentar la vision general del proyecto requerido por la empresa N. La Cual requiere un sistema que tenga como fin agilizar la comunicacion entre los diferentes miembros del equipo, sobre los diferentes miembros de la empresa y clientes. Obteniendo como resultado una respuesta mas rapida a los pedidos entre los equipos o los clientes, transferencia de miembros de los mismos equipos, notificaciones entre los diferentes departamentos y los empleados. Los mismos tickets se ubicaran en pizarraslas cuales pueden contener otras cada una contara con una descripcion del motivo de la misma y en ellas se colocaran los tickets.
+
+
+Enunciado del problema
+
+> Necesidad 
+La empresa N requiere un sistema que ayude con la comunicacion que le permita responder agilmente a los reclamos de los clientes durante las guardias y a los pedidos de los empleados/miembros de equipo facilitando las repuestas y permitiendole a la empresa seguir un conjunto ordenado de procesos durante los trabajos.
+
+> Problemas y motivacion
+La empresa no cuenta actualmente con un sistema que cumpla esta funcion y dado al reciente aumento de los empleados como de clientes se ha hecho evidente la falta de organizacion por recomendacion de terceros ha decidido optar por un sistema que cumpla esta funcion.
+
+
+Vision
+
+> Solucion propuesta 
+>> Objetivos 
+El sistema que se desarrollara intercomunicara todos los departamentos, sus puestos administrativos, los distintos equipos y miembros de equipos. Poder levantar pedidos procedentes tanto de los empleados como de los clientes y permitiendoles a los clientes ver los avances de los desarrollos mejorando asi la relacion con ellos.
+
+
+Alcance
+
+> El sistema abarcara las siguientes areas:
+  >> creacion de la estructura de la empresa.
+  >> el registro de empleados.
+  >> el registro de clientes.
+  >> creacion de los grupos de trabajo.
+  >> creacion de las pizarras.
+  >> creacion de un ticket dirigido: a un departamento/s de parte de un empleado, a un equipo/s de parte de la empresa, a un empleado por parte de un empleado
+  >> los tickets contaran con estados: aprobado, suspendido, negado | grave, menor, corregir
+  >> busqueda de empleados por puesto dentro de la empresa
+  >> sorting de los tickets por estado
+
+> El sistema no incluira
+  >> un sistema no le permitira registrarse a los clientes.
+  >> el sistema no podra modificar las respuestas a los tickets.
+  >> en los tickes se podran realizar mensajes agregados al mismo, todo aquel que no es miembro del equipo no puede visualizarlos.
+  >> no incluira un sistema de notificaciones a los empleados.
+  >> una interfaz espesifica para el cliente
+
+Cronograma
++-----------+---------------------------------------------------------------+-----------------------------
+|	semana	| actividades 													|entregables
++-----------+---------------------------------------------------------------+-----------------------------
+|	1		|creacion de la empresa											|
+|			|cracion de cargos												|
+|			|registro de empleado 											|
+|			|registro de clientes											|
++-----------+---------------------------------------------------------------+-----------------------------
+|	2		|creacion de equipos de trabajo 								|
+|			|creacion de ticket 											|
+|			|envio de ticket dirigido a una entidad de la empresa			|
+|			|envio de ticket dirigido a una entidad del equipo de desarrollo|
+|			|creacion de una terminal donde se visualizara lo realizado		|
++-----------+---------------------------------------------------------------+-----------------------------
+|	3		|ajuste sobre posibles elementos atrazados						|
+|			|pruebas sobre la terminal y ajustes							|
+|			|																|
++-----------+---------------------------------------------------------------+-----------------------------
+|	4		|incorporacion del feedback	proporcionado por los usuarios		|
+|			|definicion de las rutas de la API								|
+|			|incorporacion de la base de datos al sistema					|
++-----------+---------------------------------------------------------------+-----------------------------
+|	5	    |//creacion de la maquetado de la pagina web					|
++-----------+---------------------------------------------------------------+-----------------------------
+|	6		|//conexion a la API											|
++-----------+---------------------------------------------------------------+-----------------------------
