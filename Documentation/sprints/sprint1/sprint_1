@@ -1,0 +1,15 @@
+
+>> En el primer sprint se determino que se realizara la creacion de un ticket
+    el ticket se genera para
+        > un destinatario
+        > un asunto
+        > un estado
+        > una prioridad
+        > un texto
+        
+    de ternerlo finalizado para antes del final del sprint se debera agregar los siguiente
+        > multiples destinatarios
+        > el estado del ticket puede cambiar
+        > la prioridad del ticket puede cambiar
+        > los ticket contienen un conjunto de respuestas
+
