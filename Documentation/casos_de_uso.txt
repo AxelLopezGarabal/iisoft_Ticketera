@@ -1,4 +1,7 @@
-casos de uso
+CASOS DE USO
+
+= = = = = = = = = = = = = = = = = = = = = = = = = =
+
 
 Nombre > Resgistro de la empresa
 Actores > Usuario
@@ -7,18 +10,21 @@ Precondicion > la empresa del usuario no esta registrada
 Poscondiciones > ninguna
 Flujo Principal >
 	1 -> el usuario comienza a registrar su empresa/organizacion empezando por el nombre
-	2 -> el sistema se verifica sino existe una empresa/organizacion con ese nombre ya registrada en el sistem
-	3 -> el usuario completa los datos espesificos de la empresa/organizacion
-	4 -> el sistema verifica que los campos espesificos se hallan completado
+	2 -> el sistema se verifica sino existe una empresa/organizacion con ese nombre ya registrada en el sistema
+	3 -> el usuario completa los datos específicos de la empresa/organizacion
+	4 -> el sistema verifica que los campos específicos se hayan completado
 	5 -> una vez que el sistema verifico que los campos especificos estan completos se finaliza el registro, avisandole al cliente que el registro fue exitoso.
 Flujo alternativo >
 	2.a   -> el sistema informa que ya existe otra entidad con ese nombre y se le recomienda al usuario logearse
 	2.a'  -> el usuario desiste de registrarse
 
-	4.a   -> el usuario no completo los campos espesificos
+	4.a   -> el usuario no completo los campos específicos
 	5.a   -> el sistema le informa al usuario que debe completar los campos para completar
 	6.a   -> el usuario completa los campos del formulario [ y se vuelve al flujo original >> 4 << ]
 	6.a' -> el usuario desiste del registro
+
+
+= = = = = = = = = = = = = = = = = = = = = = = = = =
 
 
 Nombre > logeo de la empresa
@@ -33,6 +39,7 @@ Flujo Principal >
 	4 -> el sistema le da acceso al usuario para manejar la cuenta
 	5 -> el usuario puede ahora comenzar a manejar su cuenta
 
+
 Flujo alternativo >
 	1.a -> el usuario introduce datos erroneos en el sistema(ambos erroneos o el nombre de la empresa/organizacion es erroneo y la contraseña es correcta)
 	2   -> el sistema verifica la existencia de la empresa mediante el nombre de usuario
@@ -42,6 +49,10 @@ Flujo alternativo >
 	2   -> el sistema verifica la existencia de la empresa mediante el nombre de usuario
 	3   -> el sistema verifica que la contraseña sea la misma que la almacenada en el sistema para esa empresa
 	4.a -> el sistema le informa al usuario que uno o ambos valores introducidos son errones y se lo invita a intentar nuevamente
+
+
+= = = = = = = = = = = = = = = = = = = = = = = = = =
+
 
 Nombre > logout de la empresa
 Actores > 
@@ -55,4 +66,78 @@ Flujo Principal >
 	5 -> 
 
 Flujo alternativo >
-	
+
+
+= = = = = = = = = = = = = = = = = = = = = = = = = =
+
+
+Nombre > 
+Actores > 
+Descripcion > 
+Poscondiciones > 
+Flujo Principal >
+	1 -> 
+	2 -> 
+	3 -> 
+	4 -> 
+	5 -> 
+
+Flujo alternativo >
+
+
+= = = = = = = = = = = = = = = = = = = = = = = = = =
+
+
+Nombre > 
+Actores > 
+Descripcion > 
+Poscondiciones > 
+Flujo Principal >
+	1 -> 
+	2 -> 
+	3 -> 
+	4 -> 
+	5 -> 
+
+Flujo alternativo >
+
+
+= = = = = = = = = = = = = = = = = = = = = = = = = =
+
+
+Nombre > Creación de cargos
+Actores > Administrador? (del proyecto / de la empresa)?
+Descripcion > El administrador quiere crear roles dentro de la empresa para las distintas tareas. Cada usuario luego va a crearse según las opciones cargadas y los permisos dentro de cada proyecto estarán dados para cada rol.
+Precondicion > Empresa registrada, permisos de administrador y logueado al servicio como tal.
+Poscondiciones > Roles creados ???
+Flujo Principal >
+	1 -> 
+	2 -> 
+	3 -> 
+	4 -> 
+	5 -> 
+
+Flujo alternativo >
+
+
+= = = = = = = = = = = = = = = = = = = = = = = = = =
+
+
+Nombre > Registro de empleado / cliente
+Actores > Administrador?
+Descripcion > El administrador de la empresa quiere cargar un empleado de su empresa. Una vez logueado desde el panel de control elige la opción "agregar usuario". Luego de agregarlo, se le otorga un usuario y password que debe compartir al usuario creado.
+Precondicion > Empresa registrada, permisos de administrador y logueado al servicio como tal.
+Poscondiciones > Ninguna
+Flujo Principal >
+	1 -> el admin introduce el nombre del usuario a crear
+	2 -> el sistema verifica que el usuario puede ser creado
+	3 -> el admin elige de la lista (dropdown) los permisos que va a otorgar al nuevo usuario
+	4 -> el sistema verifica los datos ingresados, si están correctos se dá el mensaje de ok y se imprimen en pantalla los datos del nuevo usuario
+	5 -> el admin copia y comparte los datos
+
+Flujo alternativo >
+	2.a -> el sistema encuentra el usuario ya registrado, por lo que pide un nuevo usuario (ofreciendo alternativas)
+	4.a -> el sistema encuentra un error en el nombre (caracteres inválidos, por ejemplo). Alerta del error y vuelve a 2.
+
+
+= = = = = = = = = = = = = = = = = = = = = = = = = =

@@ -2,7 +2,7 @@ Doc. de Alcanse y vision
 
 Introduccion
 
-El Presente documento tiene como objetivo documentar la vision general del proyecto requerido por la empresa N. La Cual requiere un sistema que tenga como fin agilizar la comunicacion entre los diferentes miembros del equipo, sobre los diferentes miembros de la empresa y clientes. Obteniendo como resultado una respuesta mas rapida a los pedidos entre los equipos o los clientes, transferencia de miembros de los mismos equipos, notificaciones entre los diferentes departamentos y los empleados. Los mismos tickets se ubicaran en pizarraslas cuales pueden contener otras cada una contara con una descripcion del motivo de la misma y en ellas se colocaran los tickets.
+El Presente documento tiene como objetivo documentar la vision general del proyecto requerido por la empresa N. La Cual requiere un sistema que tenga como fin agilizar la comunicacion entre los diferentes miembros del equipo, sobre los diferentes miembros de la empresa y clientes. Obteniendo como resultado una respuesta mas rapida a los pedidos entre los equipos o los clientes, transferencia de miembros de los mismos equipos, notificaciones entre los diferentes departamentos y los empleados. Los mismos tickets se ubicaran en pizarras, las cuales pueden contener otras. Cada una contará con una descripción del motivo de la misma y en ellas se colocaran los tickets.
 
 
 Enunciado del problema
