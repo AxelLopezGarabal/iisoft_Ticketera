@@ -1,9 +1,21 @@
 
 var assert = require('assert');
-describe('Array', function() {
-  describe('#indexOf()', function() {
-    it('should return -1 when the value is not present', function() {
-      assert.equal([1, 2, 3].indexOf(4), -1);
+const systemModule = require('../model/System');
+
+const ls = ["@anna", "@marie"];
+
+const system = new systemModule.System(ls);
+
+describe('System', function() {
+  describe('#getEmployees()', function() {
+    it('should return the list of Employees', function() {
+      assert.equal(system.getEmployees(), ls);
+    });
+  });
+
+  describe('#existEmployeeWithName(employeeName)', function() {
+    it('should return true if exist the employee else false', function() {
+      assert.equal(system.existEmplayeeWithName("@marie"), true);
     });
   });
 });
