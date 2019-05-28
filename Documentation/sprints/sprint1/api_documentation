@@ -1,0 +1,20 @@
+
+Documentacion de la API
+
++-----------------------------+-------------+------------------------------+----------------------------------------------------+
+|URL                          |METHOD       |REQUIRE                       |RESPONSES                                           |
++-----------------------------+-------------+------------------------------+----------------------------------------------------+
+|localhost:9000/ticket/create |POST         |body{                         |STATUS: 200                                         |
+|                             |             |       idkey : id,            |    {                                               |
+|                             |             |       from : from,           |        "MESSAGE": "POST method"                    |
+|                             |             |       to : to,               |        "createdTicket":{                           |
+|                             |             |       topic : topic,         |                          "idkey": "idkey",         |
+|                             |             |       content : content,     |                          "from": "employeeA",      |
+|                             |             |       state : state,         |                          "to": "employeeB",        |
+|                             |             |       priority : priority    |                          "topic": "some topic",    |
+|                             |             |    }                         |                          "content": "some content",|
+|                             |             |                              |                          "state": "a state",       |
+|                             |             |                              |                          "priority": "a priority"  |
+|                             |             |                              |                        }                           |
+|                             |             |                              |    }                                               |
++-----------------------------+-------------+------------------------------+----------------------------------------------------+
