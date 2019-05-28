@@ -1,0 +1,17 @@
++principales
+
+-estados/prioridad en los tickets
+    -> multiples receptores
+-persistencia de los tickets
+-creacion de empleados
+    -> ver los tickets
+    -> ver un ticket
+-modelado de la pizarra
+    -> lista de empleados
+
+
++plus
+-los ticket tienen respuestas
+    ->url con ticket y respuestas o solo respuestas
+-modelar los grupos de trabajo
+-el systema tiene multiples empleados(agrega, elimina, encuentra)

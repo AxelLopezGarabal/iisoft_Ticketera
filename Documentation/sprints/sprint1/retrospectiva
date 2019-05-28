@@ -1,0 +1,24 @@
+Objetivo > 
++-----------------------+--------+
+| user story            | estado |
++-----------------------+--------+
+|la creacion del ticket |    1   |
++-----------------------+--------+
+
+Durante el desarrollo del sprint surgió >
++-----------------------+--------+
+| user story            | estado |
++-----------------------+--------+
+|manejo de los errores  |    1   |
++-----------------------+--------+
+
+Conocimientos adquiridos >
+    .- La estimación del tiempo sólo para el sprint 1 fue demasiado.
+
+
+A mejorar > 
+    .- Mejor estimación del tiempo asignado a las user stories.
+    
+    .- Presentar una mejor documentación que logre plasmar todo el trabajo durante el sprint y realizar la retrospectiva.
+    
+    .- Agregar test de postman para verificar el funcionamiento correcto de la api.
