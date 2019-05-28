@@ -4,7 +4,7 @@ node_js:
 
 before_install:
   - npm i -g npm@5.5.1
-  - npm init --prefix ./Ticketera
-  - npm install --prefix ./Ticketera
-  - npm test --prefix ./Ticketera
-  - npm start --prefix ./Ticketera
+##- npm init --prefix ./Ticktera
+  - npm install --prefix ./Ticktera
+  - npm test --prefix ./Ticktera
+  - npm start --prefix ./Ticktera
