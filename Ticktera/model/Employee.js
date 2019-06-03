@@ -48,6 +48,11 @@ class Employee{
 	isHisAlias(alias){
 		return this.alias == alias
 	}
+
+	//Ordena la lista de inbox por el nivel prioridad.
+	orderInBoxByPriority(){
+		this.inbox.sort(function(a, b){return a.getLevelOfPriority()-b.getLevelOfPriority()})
+	}
 }
 
 module.exports = {Employee};
