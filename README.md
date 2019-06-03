@@ -29,4 +29,3 @@ En la carpeta Documentacion se hallan/colocaran todos los archivos correspondien
 ##Sprints
 [Sprint 1](Documentation/sprints/sprint1)
 [Sprint 2](Documentation/sprints/sprint2)
-[//]: <> ([Sprint 3](Documentation/sprints/sprint3))
