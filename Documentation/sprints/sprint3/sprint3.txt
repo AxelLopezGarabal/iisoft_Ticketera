@@ -1,0 +1,11 @@
+sprint3
+
+-multiples receptores
+-ver los tickets de un empleado(como ese empleado)
+-ver un ticket (como empleado)
+-sorting por estado
+-crear sub pizarras
+-enviar un ticket a un grupo de trabajo
+        ->envia el ticket a los miembros del grupo
+
+>estructura de la empresa

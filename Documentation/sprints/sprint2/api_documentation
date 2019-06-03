@@ -1,0 +1,50 @@
+
+Documentacion de la API
+
++-----------------------------+-------------+------------------------------+----------------------------------------------------+
+|URL                          |METHOD       |REQUIRE                       |RESPONSES                                           |
++-----------------------------+-------------+------------------------------+----------------------------------------------------+
+|/ticket/                     |POST         |body{                         |STATUS: 200                                         |
+|                             |             |       idkey : id,            |    {                                               |
+|                             |             |       from : from,           |        "MESSAGE": "POST method"                    |
+|                             |             |       to : to,               |        "createdTicket":{                           |
+|                             |             |       topic : topic,         |                          "idkey": "idkey",         |
+|                             |             |       content : content,     |                          "from": "employeeA",      |
+|                             |             |       state : state,         |                          "to": "employeeB",        |
+|                             |             |       priority : priority    |                          "topic": "some topic",    |
+|                             |             |    }                         |                          "content": "some content",|
+|                             |             |                              |                          "state": "a state",       |
+|                             |             |                              |                          "priority": "a priority"  |
+|                             |             |                              |                        }                           |
+|                             |             |                              |    }                                               |
+|                             |             |                              |                                                    |
+|                             |             |                              |STATUS: 404                                         |
+|                             |             |                              |    {                                               |
+|                             |             |                              |       "error": "the is no there is no employee     |
+|                             |             |                              |                 whith name "                       |
+|                             |             |                              |    }                                               |
++-----------------------------+-------------+------------------------------+----------------------------------------------------+
+|/employee/listEmployees      |GET          |                              |STATUS: 200                                         |
+|                             |             |                              |    {                                               |
+|                             |             |                              |         "method": "GET",                           |
+|                             |             |                              |         "listOfEmployees": [                       |
+|                             |             |                              |              Employee,                             |
+|                             |             |                              |            ]                                       |
+|                             |             |                              |     }                                              |
++-----------------------------+-------------+------------------------------+----------------------------------------------------+
+|/employee/registerEmployee   |POST         |body{                         |STATUS: 200                                         |
+|                             |             |       name: name,            |    {                                               |
+|                             |             |       lastname: lastname,    |        "method": "POST",                           |
+|                             |             |       alias: alias,          |        "message": "the employee has been add to    |
+|                             |             |                              |                    the system"                     |
+|                             |             |       position: position     |    }                                               |
+|                             |             |    }                         |                                                    |
+|                             |             |                              |                                                    |
+|                             |             |                              |                                                    |
+|                             |             |                              |STATUS: 404                                         |
+|                             |             |                              |    {                                               |
+|                             |             |                              |        "method": "POST",                           |
+|                             |             |                              |        "message": "there is a employee whith the   |
+|                             |             |                              |                    alias"                          |
+|                             |             |                              |     }                                              |
++-----------------------------+-------------+------------------------------+----------------------------------------------------+
