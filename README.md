@@ -26,6 +26,6 @@ Nro | Nombre | Legajo | Mail
 En la carpeta Documentacion se hallan/colocaran todos los archivos correspondientes a la documentacion del proyecto, vsm(y sus versiones), user stories, etc. En la carpeta Ticketera se halla el proyecto que se realizara.
 
 
-##Sprints
+## Sprints
 [Sprint 1](Documentation/sprints/sprint1)
 [Sprint 2](Documentation/sprints/sprint2)
