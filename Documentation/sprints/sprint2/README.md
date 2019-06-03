@@ -5,7 +5,6 @@
 
 ### Principales
 estados/prioridad en los tickets
-
 multiples receptores
 persistencia de los tickets
 creacion de empleados
