@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+  - "7"
+
+before_install:
+  - cd ./Ticktera
+  - npm i -g npm@5.5.1
+  - npm install
+  - npm test
+##TODO: se debe testear el run?
+##  - npm start
