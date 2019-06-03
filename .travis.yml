@@ -5,9 +5,9 @@ node_js:
 install:
   - npm install -g codecov
 script:
-  - istanbul cover ./node_modules/mocha/bin/_mocha --reporter lcovonly -- -R spec
-  - codecov
 ## TODO: el reporte de cobertura no es tan fácil, investigar https://github.com/codecov/example-node
+##  - istanbul cover ./node_modules/mocha/bin/_mocha --reporter lcovonly -- -R spec
+##  - codecov
 
 before_install:
   - cd ./Ticktera
