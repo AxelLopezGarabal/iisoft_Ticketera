@@ -10,7 +10,7 @@ script:
 ##  - codecov
 
 before_install:
-  - cd ./Ticktera
+  - cd ./Ticketera
   - npm i -g npm@5.5.1
   - npm install
   - npm test
