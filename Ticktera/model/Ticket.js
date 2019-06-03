@@ -1,6 +1,6 @@
 class Ticket{
-	constructor(id, from, to, topic, content, state, priority){
-		this.idkey = id;
+	constructor(from, to, topic, content, state, priority){
+		this.idkey = undefined;
 		this.from = from;
 		this.to = to;
 		this.topic = topic;

@@ -1,3 +1,5 @@
+const employeeModule = require('./Employee');
+
 class System{
 	constructor(employees){
 		this.employees = employees;
@@ -7,12 +9,29 @@ class System{
 		return this.employees;
 	}
 
-	existEmplayeeWithName(employeeName){
+	registerEmployee(newEmployee){
+		this.employees.push(newEmployee);
+	}
+
+	existEmplayeeWithAlias(employeeAlias){
 		let res = false;
 		for(var i=0; i < this.employees.length; i++){
-			res = res || (this.employees[i] == employeeName)
+			res = res || (this.employees[i].getAlias() == employeeAlias);
 		}
 		return res;
+	}
+
+	getEmployeeByAlias(employeeAlias){
+		for(var i=0; i < this.employees.length; i++){
+			if(this.employees[i].isHisAlias(employeeAlias)){
+				return this.employees[i];
+			}
+		}
+	}
+
+	sendTicketTo(ticket, employeeAliasDestiny, employeeAliasOrigin){
+		employeeAliasOrigin.addToOutbox(ticket);
+		employeeAliasDestiny.addToInbox(ticket);
 	}
 }
 
