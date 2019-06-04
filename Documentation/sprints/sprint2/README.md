@@ -40,6 +40,7 @@ el sistema tiene multiples empleados(agrega, elimina, encuentra)
 ## Retrospectiva
 
 Objetivos:
+
 | Tarea                           | Puntaje | Estado |
 | ------------------------------- |---------| ------ |
 | estados/prioridad en los ticket |       3 |      1 |
@@ -49,6 +50,7 @@ Objetivos:
 
 
 Durante el desarrollo del sprint surgió:
+
 | Tarea                           | Puntaje | Estado |
 | ------------------------------- |---------| ------ |
 | adicional1                      |       3 |      1 |
