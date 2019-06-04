@@ -1,41 +1,34 @@
-# Ticketera - Sprint 2
+# Ticketera - Sprint 3
 
 ## Tareas:
 
 
 ### Principales
 
-estados/prioridad en los ticket 
-
 multiples receptores
 
-persistencia de los tickets
+ver los tickets de un empleado(como ese empleado)
 
-creacion de empleados
+ver un ticket (como empleado)
 
-    ver los tickets
+sorting por estado
 
-    ver un ticket
+crear sub pizarras
 
-modelado de la pizarra
+enviar un ticket a un grupo de trabajo
 
-    lista de empleados
+    envia el ticket a los miembros del grupo
+
 
 ### Plus
 
-los ticket tienen respuestas
-
-    url con ticket y respuestas o solo respuestas
-
-modelar los grupos de trabajo
-
-el sistema tiene multiples empleados(agrega, elimina, encuentra)
+estructura de la empresa
 
 
 
 ## Gráfico de velocidad
 
-(TODO)
+(TODO - 10/06/19)
 
 ## Retrospectiva
 
@@ -45,7 +38,7 @@ Objetivos:
 | estados/prioridad en los ticket |       3 |      1 |
 | multiples receptores            |       3 |      0 |
 
-(... TODO)
+(TODO - 10/06/19)
 
 
 Durante el desarrollo del sprint surgió:
@@ -54,18 +47,15 @@ Durante el desarrollo del sprint surgió:
 | adicional1                      |       3 |      1 |
 | tarea adicional 2               |       3 |      0 |
 
-(...TODO)
+(TODO - 10/06/19)
 
 
 ### Conocimientos adquiridos:
-servidor de CI corriendo
 
-trello incorporado para mejorar la visualización de las tareas
+(TODO - 10/06/19)
+
 
 ### A mejorar:
 
-difinir horario / día de retrospectiva, organizar
-
-organización del tiempo para realizar las tareas
-
+(TODO - 10/06/19)
 
