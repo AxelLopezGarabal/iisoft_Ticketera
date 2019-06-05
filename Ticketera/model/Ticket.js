@@ -9,6 +9,22 @@ class Ticket{
 		this.priority = priority;
 	}
 
+	getFrom(){
+		return this.from;
+	}
+
+	getTopic(){
+		return this.topic;
+	}
+
+	getState(){
+		return this.state;
+	}
+
+	getPriority(){
+		return this.priority;
+	}
+
 	//Nivel de prioridad, donde 0 sería el nivel más alto de prioridad. (A definir)
 	getLevelOfPriority(){
 		if(this.priority = 'bajo'){

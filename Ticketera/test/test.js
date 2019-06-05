@@ -58,7 +58,7 @@ describe('System', function() {
       system.registerEmployee(anna);
       system.registerEmployee(marie);
 
-      const ticket = new ticketModule.Ticket('@anna', '@marie', topic, content, state, priority);
+      const ticket = new ticketModule.Ticket('@marie', '@anna', topic, content, state, priority);
 
       system.sendTicketTo(ticket, anna, marie);
 
@@ -67,6 +67,52 @@ describe('System', function() {
 
       assert.equal(employeeDestiny.getInbox().length, 1);
       assert.equal(employeeOrigin.getOutbox().length, 1);
+    });
+  });
+
+    describe('#getInboxOfTheEmployeeWithAlias(employeeAlias)', function() {
+    it('should return the inbox of the employee with that alias', function() {
+      
+      const inboxList = system.getInboxOfTheEmployeeWithAlias('@anna');
+      
+      assert.equal(inboxList.length, 1);
+    });
+  });
+
+    describe('#reduceInfoFromTickets(aListOfTickets)', function() {
+    it('should return a list of tickets with less information than the original list', function() {
+      
+      const topic = 'it sounds folky';
+      const content = 'just some random theme from Dr. House';
+      const state = 'pendiente';
+      const priority = 'bajo';
+
+      const ticket = new ticketModule.Ticket('@marie', '@anna', topic, content, state, priority);
+
+      const ls = [ticket, ticket];
+      
+      const reducedTicketList = system.reduceInfoFromTickets(ls);
+
+      assert.equal(reducedTicketList.length, 2);
+      assert.equal(reducedTicketList[0].getFrom(), ls[0].getFrom());
+      assert.equal(reducedTicketList[0].getState(), ls[0].getState());
+      assert.equal(reducedTicketList[0].getTopic(), ls[0].getTopic());
+      assert.equal(reducedTicketList[0].getPriority(), ls[0].getPriority());
+    });
+  });
+
+    describe('#verifyIndexForEmployeeInbox(index, alias)', function() {
+    it('should return true or false if the amount of tickets that the employee has is greater of equal to the index', function() {
+      assert.equal(system.verifyIndexForEmployeeInbox(1, '@anna'), true);
+    });
+  });
+
+    describe('#getTicketInIndexFromEmployeeInbox(index, alias)', function() {
+    it('should return the ticket which is place in the index', function() {
+      const ticket = system.getTicketInIndexFromEmployeeInbox(1, '@anna');
+
+      assert.equal(ticket.getFrom(), '@marie');
+      assert.equal(ticket.getTopic(), 'it sounds folky');
     });
   });
 });

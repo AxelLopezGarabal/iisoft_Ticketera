@@ -53,6 +53,14 @@ class Employee{
 	orderInBoxByPriority(){
 		this.inbox.sort(function(a, b){return a.getLevelOfPriority()-b.getLevelOfPriority()})
 	}
+
+	getAmountOfTicketsFromInbox(){
+		return this.inbox.length;
+	}
+
+	getTicketNFromInbox(index){
+		return this.inbox[index-1]
+	}
 }
 
 module.exports = {Employee};

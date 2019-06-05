@@ -1,4 +1,6 @@
 const employeeModule = require('./Employee');
+const ticketModule = require('./Ticket');
+const reducedTicketModule  = require('./ReducedTicket');
 
 class System{
 	constructor(employees){
@@ -32,6 +34,33 @@ class System{
 	sendTicketTo(ticket, employeeAliasDestiny, employeeAliasOrigin){
 		employeeAliasOrigin.addToOutbox(ticket);
 		employeeAliasDestiny.addToInbox(ticket);
+	}
+
+	getInboxOfTheEmployeeWithAlias(alias){
+		const employee = this.getEmployeeByAlias(alias);
+		return this.reduceInfoFromTickets(employee.getInbox())
+	}
+
+	reduceInfoFromTickets(listOfTickets){
+		let newListOfTickets = [];
+		for(var i=0; i < listOfTickets.length; i++){
+			const from  = listOfTickets[i].getFrom();
+			const topic = listOfTickets[i].getTopic();
+			const state = listOfTickets[i].getState();
+			const prior = listOfTickets[i].getPriority();
+			newListOfTickets.push(new reducedTicketModule.ReducedTicket(from, topic, prior, state));
+		}
+		return newListOfTickets;
+	}
+
+	verifyIndexForEmployeeInbox(paramIndex, paramAlias){
+		const employee = this.getEmployeeByAlias(paramAlias);
+		return employee.getAmountOfTicketsFromInbox() >= paramIndex;
+	}
+
+	getTicketInIndexFromEmployeeInbox(paramIndex, paramAlias){
+		const employee = this.getEmployeeByAlias(paramAlias);
+		return employee.getTicketNFromInbox(paramIndex);
 	}
 }
 
