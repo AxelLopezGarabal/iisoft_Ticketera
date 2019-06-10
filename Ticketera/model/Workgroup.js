@@ -1,16 +1,22 @@
-class Workgroup{
+const ticketReceiverModule = require('./TicketReceiver');
 
-    constructor(workers,billboard){
-        this.workers = workers;
+
+class Workgroup extends ticketReceiverModule.TicketReceiver{
+
+    constructor(alias, billboard){
+        super(alias);
+        this.employees = [];
         this.billboard = billboard;
     }
 
-    getWorkers(){
-		return this.workers;
+    getEmployees(){
+		return this.employees;
     }
 
-    setWorkers(worker){
-        this.workers.push(worker);
+    addEmployee(employee){
+        this.employees.push(employee);
     }
     
 }
+
+module.exports = {Workgroup};
