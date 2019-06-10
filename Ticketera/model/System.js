@@ -1,18 +1,28 @@
 const employeeModule = require('./Employee');
+const workgroupModule = require('./Workgroup');
 const ticketModule = require('./Ticket');
 const reducedTicketModule  = require('./ReducedTicket');
 
 class System{
 	constructor(employees){
 		this.employees = employees;
+		this.workgroups = [];
 	}
 
 	getEmployees(){
 		return this.employees;
 	}
 
+	getWorkgroups(){
+		return this.workgroups;
+	}
+
 	registerEmployee(newEmployee){
 		this.employees.push(newEmployee);
+	}
+
+	registerWorkgroup(_workgroup){
+		this.workgroups.push(_workgroup);
 	}
 
 	existEmplayeeWithAlias(employeeAlias){
@@ -31,9 +41,10 @@ class System{
 		}
 	}
 
-	sendTicketTo(ticket, employeeAliasDestiny, employeeAliasOrigin){
+	// enviar ticket a grupo o empleado
+	sendTicketTo(ticket, aliasDestiny, employeeAliasOrigin){
 		employeeAliasOrigin.addToOutbox(ticket);
-		employeeAliasDestiny.addToInbox(ticket);
+		aliasDestiny.addToInbox(ticket);
 	}
 
 	getInboxOfTheEmployeeWithAlias(alias){
