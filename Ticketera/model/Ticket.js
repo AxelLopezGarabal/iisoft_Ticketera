@@ -6,7 +6,16 @@ class Ticket{
 		this.topic = topic;
 		this.content = content;
 		this.state = state;
-		this.priority = priority;
+		this.priorityEnum = {
+			URGENT: 1,
+			MEDIUM: 2,
+			SLOW: 3,
+			properties: {
+				1: {name: "urgente", value: 1},
+				2: {name: "medio", value: 2},
+				3: {name: "bajo", value: 3}
+			}
+		};
 	}
 
 	getFrom(){
@@ -21,23 +30,11 @@ class Ticket{
 		return this.state;
 	}
 
-	getPriority(){
-		return this.priority;
+	getPriorityEnum(){
+		return this.priorityEnum;
 	}
 
-	//Nivel de prioridad, donde 0 sería el nivel más alto de prioridad. (A definir)
-	getLevelOfPriority(){
-		if(this.priority = 'bajo'){
-			return 2;
-		}
-		if(this.priority = 'medio'){
-			return 1;
-		}
-		if(this.priority = 'urgente'){
-			return 0;
-		}
-		return 3;
-	}
+	
 }
 
 module.exports = {Ticket};

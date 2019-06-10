@@ -51,7 +51,7 @@ class Employee{
 
 	//Ordena la lista de inbox por el nivel prioridad.
 	orderInBoxByPriority(){
-		this.inbox.sort(function(a, b){return a.getLevelOfPriority()-b.getLevelOfPriority()})
+		this.inbox.sort(function(a, b){return a.getPriorityEnum()-b.getPriorityEnum()})
 	}
 
 	getAmountOfTicketsFromInbox(){
