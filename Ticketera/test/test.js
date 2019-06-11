@@ -70,10 +70,10 @@ describe('System', function() {
     });
   });
 
-    describe('#getInboxOfTheEmployeeWithAlias(employeeAlias)', function() {
+    describe('#getInboxOfEmployeeWithAlias(employeeAlias)', function() {
     it('should return the inbox of the employee with that alias', function() {
       
-      const inboxList = system.getInboxOfTheEmployeeWithAlias('@anna');
+      const inboxList = system.getInboxOfMemberWithAlias('@anna');
       
       assert.equal(inboxList.length, 1);
     });
@@ -103,13 +103,13 @@ describe('System', function() {
 
     describe('#verifyIndexForEmployeeInbox(index, alias)', function() {
     it('should return true or false if the amount of tickets that the employee has is greater of equal to the index', function() {
-      assert.equal(system.verifyIndexForEmployeeInbox(1, '@anna'), true);
+      assert.equal(system.verifyIndexForMemberInbox(1, '@anna'), true);
     });
   });
 
     describe('#getTicketInIndexFromEmployeeInbox(index, alias)', function() {
     it('should return the ticket which is place in the index', function() {
-      const ticket = system.getTicketInIndexFromEmployeeInbox(1, '@anna');
+      const ticket = system.getTicketInIndexFromMemberInbox(1, '@anna');
 
       assert.equal(ticket.getFrom(), '@marie');
       assert.equal(ticket.getTopic(), 'it sounds folky');

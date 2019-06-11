@@ -9,6 +9,7 @@ class System{
 		this.workgroups = [];
 	}
 
+	//FIXME: precondición: los aliases de empleados y grupos deben ser difenrentes (@sara, #devs)
 	getEmployees(){
 		return this.employees;
 	}
@@ -41,15 +42,29 @@ class System{
 		}
 	}
 
+	getWorkgroupByAlias(alias){
+		for(var i=0; i < this.workgroups.length; i++){
+			if(this.workgroups[i].isHisAlias(alias)){
+				return this.workgroups[i];
+			}
+		}
+	}
+
+	getMemberByAlias(alias){
+		let member = this.getEmployeeByAlias(alias);
+		//let member = this.getWorkgroupByAlias(alias);
+		return member;
+	}
+
 	// enviar ticket a grupo o empleado
-	sendTicketTo(ticket, aliasDestiny, employeeAliasOrigin){
-		employeeAliasOrigin.addToOutbox(ticket);
+	sendTicketTo(ticket, aliasDestiny, aliasOrigin){
+		aliasOrigin.addToOutbox(ticket);
 		aliasDestiny.addToInbox(ticket);
 	}
 
-	getInboxOfTheEmployeeWithAlias(alias){
-		const employee = this.getEmployeeByAlias(alias);
-		return this.reduceInfoFromTickets(employee.getInbox())
+	getInboxOfMemberWithAlias(alias){
+		const member = this.getMemberByAlias(alias);
+		return this.reduceInfoFromTickets(member.getInbox())
 	}
 
 	reduceInfoFromTickets(listOfTickets){
@@ -64,14 +79,14 @@ class System{
 		return newListOfTickets;
 	}
 
-	verifyIndexForEmployeeInbox(paramIndex, paramAlias){
-		const employee = this.getEmployeeByAlias(paramAlias);
-		return employee.getAmountOfTicketsFromInbox() >= paramIndex;
+	verifyIndexForMemberInbox(paramIndex, paramAlias){
+		const member = this.getMemberByAlias(paramAlias);
+		return member.getAmountOfTicketsFromInbox() >= paramIndex;
 	}
 
-	getTicketInIndexFromEmployeeInbox(paramIndex, paramAlias){
-		const employee = this.getEmployeeByAlias(paramAlias);
-		return employee.getTicketNFromInbox(paramIndex);
+	getTicketInIndexFromMemberInbox(paramIndex, paramAlias){
+		const member = this.getMemberByAlias(paramAlias);
+		return member.getTicketNFromInbox(paramIndex);
 	}
 }
 
