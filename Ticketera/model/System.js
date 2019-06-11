@@ -52,6 +52,11 @@ class System{
 		return this.reduceInfoFromTickets(employee.getInbox())
 	}
 
+	getOutboxOfTheEmployeeWithAlias(alias){
+		const employee = this.getEmployeeByAlias(alias);
+		return this.reduceInfoFromTickets(employee.getOutbox());
+	}
+
 	reduceInfoFromTickets(listOfTickets){
 		let newListOfTickets = [];
 		for(var i=0; i < listOfTickets.length; i++){
@@ -69,9 +74,19 @@ class System{
 		return employee.getAmountOfTicketsFromInbox() >= paramIndex;
 	}
 
+	verifyIndexForEmployeeOutbox(paramIndex, paramAlias){
+		const employee = this.getEmployeeByAlias(paramAlias);
+		return employee.getAmountOfTicketsFromOutbox() >= paramIndex;
+	}
+
 	getTicketInIndexFromEmployeeInbox(paramIndex, paramAlias){
 		const employee = this.getEmployeeByAlias(paramAlias);
 		return employee.getTicketNFromInbox(paramIndex);
+	}
+
+	getTicketInIndexFromEmployeeOutbox(paramIndex, paramAlias){
+		const employee = this.getEmployeeByAlias(paramAlias);
+		return employee.getTicketNFromOutbox(paramIndex);
 	}
 }
 

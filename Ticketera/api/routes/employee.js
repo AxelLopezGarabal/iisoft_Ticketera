@@ -43,7 +43,7 @@ router.get('/employee=:alias', (req, res, next) => {
 	});
 });
 
-router.get('/employee=:alias/listInbox', (req, res, next) => {
+router.get('/employee=:alias/inbox', (req, res, next) => {
 	const param = req.params.alias;
 	if(!system.existEmplayeeWithAlias(param)){
 		res.status(404).json({
@@ -77,6 +77,47 @@ router.get('/employee=:alias/inbox/ticket=:nro', (req, res, next) => {
 		}
 		else{
 			const ticketN = system.getTicketInIndexFromEmployeeInbox(paramnro, paramAlias);
+			res.status(200).json({
+				method: 'GET',
+				ticket: ticketN
+			});
+		}
+	}
+});
+
+router.get('/employee=:alias/outbox', (req, res, next) => {
+	const param = req.params.alias;
+	if(!system.existEmplayeeWithAlias(param)){
+		res.status(404).json({
+			method: 'GET',
+			message: 'there is no employee whith the alias' + param + '.'
+		})
+	}
+	const outboxList = system.getOutboxOfTheEmployeeWithAlias(param);
+	res.status(200).json({
+		method: 'GET',
+		outbox: outboxList
+	});
+});
+
+router.get('/employee=:alias/outbox/ticket=:nro', (req, res, next) => {
+  	const paramAlias = req.params.alias;
+	const paramnro = parseInt(req.params.nro, 10);
+	if(!system.existEmplayeeWithAlias(paramAlias)){
+		res.status(404).json({
+			method: 'GET',
+			message: 'there is no employee whith the alias' + paramAlias + ''
+		});
+	}
+	else{
+		if(!system.verifyIndexForEmployeeOutbox(paramnro, paramAlias)){
+			res.status(404).json({
+				method: 'GET',
+				message: 'the employee whith the alias ' + paramAlias + 'has not that amount of tickets in the inbox.'
+			});	
+		}
+		else{
+			const ticketN = system.getTicketInIndexFromEmployeeOutbox(paramnro, paramAlias);
 			res.status(200).json({
 				method: 'GET',
 				ticket: ticketN
