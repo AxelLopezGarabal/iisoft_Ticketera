@@ -59,11 +59,28 @@ describe('System - Employees & Workgroups', function() {
       assert.equal(system.getWorkgroups().length, 0);
 
       system.registerWorkgroup(devs);
-
       assert.equal(system.getWorkgroups().length, 1);
       assert.equal(system.getWorkgroups()[0].getAlias(), '#devs');
     });
   });
+
+  // EMPLOYEES & WORKGROUPS
+  describe('#getMemberEmployeeByAlias(employeeAlias)', function() {
+    it('should return member (employee) with that alias', function() {
+
+      system.registerEmployee(anna);
+   	  assert.equal(system.getMemberByAlias('@anna'), anna);
+    });
+  });
+
+  describe('#getMemberWorkgroupByAlias(employeeAlias)', function() {
+    it('should return member (workgroup) with that alias', function() {
+
+      system.registerWorkgroup(devs);
+   	  assert.equal(system.getMemberByAlias('#devs'), devs);
+    });
+  });
+
 
   
 });

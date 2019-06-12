@@ -59,8 +59,8 @@ class System{
 	}
 	//TODO: check
 	getMemberByAlias(alias){
-		let member = this.getEmployeeByAlias(alias);
-		//let member = this.getWorkgroupByAlias(alias);
+		let x = this.getEmployeeByAlias(alias);
+		let member = Object.is(x, undefined) ? this.getWorkgroupByAlias(alias) : x;
 		return member;
 	}
 	
