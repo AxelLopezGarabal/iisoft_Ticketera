@@ -9,6 +9,7 @@ class System{
 		this.workgroups = [];
 	}
 
+	//FIXME: precondición: los aliases de empleados y grupos deben ser difenrentes (@sara, #devs)
 	getEmployees(){
 		return this.employees;
 	}
@@ -25,7 +26,7 @@ class System{
 		this.workgroups.push(_workgroup);
 	}
 
-	existEmplayeeWithAlias(employeeAlias){
+	existEmployeeWithAlias(employeeAlias){
 		let res = false;
 		for(var i=0; i < this.employees.length; i++){
 			res = res || (this.employees[i].getAlias() == employeeAlias);
@@ -41,15 +42,43 @@ class System{
 		}
 	}
 
+	getWorkgroupByAlias(alias){
+		for(var i=0; i < this.workgroups.length; i++){
+			if(this.workgroups[i].isHisAlias(alias)){
+				return this.workgroups[i];
+			}
+		}
+	}
+
+	getEmployeeByAlias(employeeAlias){
+		for(var i=0; i < this.employees.length; i++){
+			if(this.employees[i].isHisAlias(employeeAlias)){
+				return this.employees[i];
+			}
+		}
+	}
+	//TODO: check
+	getMemberByAlias(alias){
+		let x = this.getEmployeeByAlias(alias);
+		let member = Object.is(x, undefined) ? this.getWorkgroupByAlias(alias) : x;
+		return member;
+	}
+	
+
 	// enviar ticket a grupo o empleado
-	sendTicketTo(ticket, aliasDestiny, employeeAliasOrigin){
-		employeeAliasOrigin.addToOutbox(ticket);
+	sendTicketTo(ticket, aliasDestiny, aliasOrigin){
+		aliasOrigin.addToOutbox(ticket);
 		aliasDestiny.addToInbox(ticket);
 	}
 
-	getInboxOfTheEmployeeWithAlias(alias){
+	getInboxOfEmployeeWithAlias(alias){
 		const employee = this.getEmployeeByAlias(alias);
 		return this.reduceInfoFromTickets(employee.getInbox())
+	}
+	//TODO: check
+	getInboxOfMemberWithAlias(alias){
+		const member = this.getMemberByAlias(alias);
+		return this.reduceInfoFromTickets(member.getInbox())
 	}
 
 	getOutboxOfTheEmployeeWithAlias(alias){
@@ -72,6 +101,21 @@ class System{
 	verifyIndexForEmployeeInbox(paramIndex, paramAlias){
 		const employee = this.getEmployeeByAlias(paramAlias);
 		return employee.getAmountOfTicketsFromInbox() >= paramIndex;
+	}
+	//TODO: check
+	verifyIndexForMemberInbox(paramIndex, paramAlias){
+		const member = this.getMemberByAlias(paramAlias);
+		return member.getAmountOfTicketsFromInbox() >= paramIndex;
+	}
+
+	getTicketInIndexFromEmployeeInbox(paramIndex, paramAlias){
+		const employee = this.getEmployeeByAlias(paramAlias);
+		return employee.getTicketNFromInbox(paramIndex);
+	}
+	//TODO: check
+	getTicketInIndexFromMemberInbox(paramIndex, paramAlias){
+		const member = this.getMemberByAlias(paramAlias);
+		return member.getTicketNFromInbox(paramIndex);
 	}
 
 	verifyIndexForEmployeeOutbox(paramIndex, paramAlias){

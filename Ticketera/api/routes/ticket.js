@@ -12,7 +12,7 @@ router.get('/', (req, res, next) => {
 
 router.post('/', (req, res, next) => {
 	const receptor = req.body.to;
-	if(!system.existEmplayeeWithAlias(receptor)){
+	if(!system.existEmployeeWithAlias(receptor)){
 		res.status(404).json({
 			message: 'there is no employee whith name ' + receptor + ''
 		})

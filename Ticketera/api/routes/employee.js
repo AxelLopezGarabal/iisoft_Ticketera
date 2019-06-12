@@ -14,7 +14,7 @@ router.get('/listEmployees', (req, res, next) => {
 
 router.post('/registerEmployee', (req, res, next) => {
 	const employeeAlias = req.body.to;
-	if(system.existEmplayeeWithAlias(employeeAlias)){
+	if(system.existEmployeeWithAlias(employeeAlias)){
 		res.status(404).json({
 			method: 'POST',
 			message: 'there is a employee whith the alias' + employeeAlias + ''
@@ -30,7 +30,7 @@ router.post('/registerEmployee', (req, res, next) => {
 
 router.get('/employee=:alias', (req, res, next) => {
 	const param = req.params.alias;
-	if(!system.existEmplayeeWithAlias(param)){
+	if(!system.existEmployeeWithAlias(param)){
 		res.status(404).json({
 			method: 'GET',
 			message: 'there is no employee whith the alias' + param + ''
@@ -45,7 +45,7 @@ router.get('/employee=:alias', (req, res, next) => {
 
 router.get('/employee=:alias/inbox', (req, res, next) => {
 	const param = req.params.alias;
-	if(!system.existEmplayeeWithAlias(param)){
+	if(!system.existEmployeeWithAlias(param)){
 		res.status(404).json({
 			method: 'GET',
 			message: 'there is no employee whith the alias' + param + ''
@@ -62,7 +62,7 @@ router.get('/employee=:alias/inbox', (req, res, next) => {
 router.get('/employee=:alias/inbox/ticket=:nro', (req, res, next) => {
   	const paramAlias = req.params.alias;
 	const paramnro = parseInt(req.params.nro, 10);
-	if(!system.existEmplayeeWithAlias(paramAlias)){
+	if(!system.existEmployeeWithAlias(paramAlias)){
 		res.status(404).json({
 			method: 'GET',
 			message: 'there is no employee whith the alias' + paramAlias + ''
@@ -87,7 +87,7 @@ router.get('/employee=:alias/inbox/ticket=:nro', (req, res, next) => {
 
 router.get('/employee=:alias/outbox', (req, res, next) => {
 	const param = req.params.alias;
-	if(!system.existEmplayeeWithAlias(param)){
+	if(!system.existEmployeeWithAlias(param)){
 		res.status(404).json({
 			method: 'GET',
 			message: 'there is no employee whith the alias' + param + '.'
@@ -103,7 +103,7 @@ router.get('/employee=:alias/outbox', (req, res, next) => {
 router.get('/employee=:alias/outbox/ticket=:nro', (req, res, next) => {
   	const paramAlias = req.params.alias;
 	const paramnro = parseInt(req.params.nro, 10);
-	if(!system.existEmplayeeWithAlias(paramAlias)){
+	if(!system.existEmployeeWithAlias(paramAlias)){
 		res.status(404).json({
 			method: 'GET',
 			message: 'there is no employee whith the alias' + paramAlias + ''
