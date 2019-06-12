@@ -62,6 +62,14 @@ class Employee{
 		return this.inbox[index-1]
 	}
 
+	getAmountOfTicketsFromOutbox(){
+		return this.outbox.length;
+	}
+
+	getTicketNFromOutbox(index){
+		return this.inbox[index-1]	
+	}
+
 	changeStateTicketToDone(ticket){
 		ticket.setTicketDone();
 	}

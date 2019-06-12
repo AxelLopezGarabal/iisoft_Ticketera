@@ -40,8 +40,8 @@ describe('System - Employees & Workgroups', function() {
 
       system.registerEmployee(marie);
 
-      assert.equal(system.existEmplayeeWithAlias('@marie'), true);
-      assert.equal(system.existEmplayeeWithAlias('@Anna'), false);
+      assert.equal(system.existEmployeeWithAlias('@marie'), true);
+      assert.equal(system.existEmployeeWithAlias('@Anna'), false);
     });
   });
 
