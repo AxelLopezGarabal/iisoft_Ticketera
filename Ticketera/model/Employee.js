@@ -50,9 +50,18 @@ class Employee{
 	}
 
 	//Ordena la lista de inbox por el nivel prioridad.
-	orderInBoxByPriority(){
-		this.inbox.sort(function(a, b){return a.getPriorityEnum()-b.getPriorityEnum()})
+	/*
+	sortInBoxByPriority(){
+		this.inbox.sort(function(a, b){return a.getPriority()-b.getPriority()})
 	}
+	
+
+	//Ordena la lista de inbox por nivel de estado (sería con el estado más alto)
+	sortInBoxByState(){
+		this.inbox.sort(function(a, b){return a.getState()-b.getState()})
+		}
+	}
+	*/
 
 	getAmountOfTicketsFromInbox(){
 		return this.inbox.length;
@@ -71,7 +80,15 @@ class Employee{
 	}
 
 	changeStateTicketToDone(ticket){
-		ticket.setTicketDone();
+		ticket.setState(4);
+	}
+
+	changeStateTicket(ticket, state){
+		ticket.setState(state);
+	}
+
+	changePriorityTicket(ticket, priority){
+		ticket.setPriority(priority)
 	}
 }
 

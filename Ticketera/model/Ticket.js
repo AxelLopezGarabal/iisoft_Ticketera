@@ -1,3 +1,5 @@
+
+
 class Ticket{
 	constructor(from, to, topic, content, state, priority){
 		this.idkey = undefined;
@@ -6,17 +8,23 @@ class Ticket{
 		this.topic = topic;
 		this.content = content;
 		this.state = state;
-		this.priorityEnum = {
-			URGENT: 1,
-			MEDIUM: 2,
-			SLOW: 3,
-			properties: {
-				1: {name: "urgente", value: 1},
-				2: {name: "medio", value: 2},
-				3: {name: "bajo", value: 3}
-			}
-		};
+		this.priority = priority;
 	}
+
+	/*
+	State {
+		PENDING: 1,
+		APPROVED: 2,
+		REJECTED: 3,
+		DONE: 4
+	}
+
+	Priority {
+		URGENT: 1,
+		MEDIUM: 2,
+		SLOW: 3
+	}
+	*/
 
 	getFrom(){
 		return this.from;
@@ -30,8 +38,16 @@ class Ticket{
 		return this.state;
 	}
 
-	getPriorityEnum(){
-		return this.priorityEnum;
+	getPriority(){
+		return this.priority;
+	}
+
+	setState(state){
+		this.state = state;
+	}
+
+	setPriority(priority){
+		this.priority = priority;
 	}
 
 	
