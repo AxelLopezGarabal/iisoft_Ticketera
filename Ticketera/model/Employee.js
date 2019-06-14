@@ -44,7 +44,7 @@ class Employee{
 	getOutbox(){
 		return this.outbox;
 	}
-
+	
 	isHisAlias(alias){
 		return this.alias == alias
 	}
@@ -60,6 +60,18 @@ class Employee{
 
 	getTicketNFromInbox(index){
 		return this.inbox[index-1]
+	}
+
+	getAmountOfTicketsFromOutbox(){
+		return this.outbox.length;
+	}
+
+	getTicketNFromOutbox(index){
+		return this.inbox[index-1]	
+	}
+
+	changeStateTicketToDone(ticket){
+		ticket.setTicketDone();
 	}
 }
 

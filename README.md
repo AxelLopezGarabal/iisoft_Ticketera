@@ -10,6 +10,8 @@ Nro | Nombre | Legajo | Mail
 
 ### CI
 
+[![Build Status](https://travis-ci.com/AxelLopezGarabal/iisoft_Ticketera.svg?branch=master)](https://travis-ci.com/AxelLopezGarabal/iisoft_Ticketera)
+
 ### Tests coverage
 
 ### Backlog
