@@ -13,7 +13,7 @@ class System{
 	getEnterpriceByName(enterpriceName){
 		for(var i=0; i < this.enterprices.length; i++){
 			if(this.enterprices[i].isHisName(enterpriceName)){
-				return this.employees[i];
+				return this.enterprices[i];
 			}
 		}
 	}
@@ -22,12 +22,21 @@ class System{
 		this.enterprices.push(newEnterprice);
 	}
 
+	existEnterpriceWithName(enterpriceName){
+		var result = false;
+		for(var i=0; i < this.enterprices.length; i++){
+				result = result || this.enterprices[i].isHisName(enterpriceName);
+		}
+		return result;
+	}
+
 	getEmployeesFromEnterpriceWithName(enterpriceName){
 		this.getEnterpriceByName(enterpriceName).getEmployees();
 	}
 
 	addEmployeeWithAliasToEnterpriceWithName(employeeAlias, enterpriceName){
-		this.getEnterpriceByName(enterpriceName).addEmployee(this.getEmployeeByAlias(employeeAlias));
+		const employee = this.getEmployeeByAlias(employeeAlias);
+		this.getEnterpriceByName(enterpriceName).addEmployee(employee);
 	}
 
 	getEmployees(){
@@ -36,6 +45,10 @@ class System{
 
 	getWorkgroups(){
 		return this.workgroups;
+	}
+
+	getEnterprices(){
+		return this.enterprices;
 	}
 
 	registerEmployee(newEmployee){
