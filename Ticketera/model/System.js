@@ -7,9 +7,29 @@ class System{
 	constructor(employees){
 		this.employees = employees;
 		this.workgroups = [];
+		this.enterprices = [];
 	}
 
-	//FIXME: precondición: los aliases de empleados y grupos deben ser difenrentes (@sara, #devs)
+	getEnterpriceByName(enterpriceName){
+		for(var i=0; i < this.enterprices.length; i++){
+			if(this.enterprices[i].isHisName(enterpriceName)){
+				return this.employees[i];
+			}
+		}
+	}
+
+	registerEnterprice(newEnterprice){
+		this.enterprices.push(newEnterprice);
+	}
+
+	getEmployeesFromEnterpriceWithName(enterpriceName){
+		this.getEnterpriceByName(enterpriceName).getEmployees();
+	}
+
+	addEmployeeWithAliasToEnterpriceWithName(employeeAlias, enterpriceName){
+		this.getEnterpriceByName(enterpriceName).addEmployee(this.getEmployeeByAlias(employeeAlias));
+	}
+
 	getEmployees(){
 		return this.employees;
 	}
@@ -50,13 +70,6 @@ class System{
 		}
 	}
 
-	getEmployeeByAlias(employeeAlias){
-		for(var i=0; i < this.employees.length; i++){
-			if(this.employees[i].isHisAlias(employeeAlias)){
-				return this.employees[i];
-			}
-		}
-	}
 	//TODO: check
 	getMemberByAlias(alias){
 		let x = this.getEmployeeByAlias(alias);
