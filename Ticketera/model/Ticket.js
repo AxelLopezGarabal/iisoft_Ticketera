@@ -1,3 +1,5 @@
+
+
 class Ticket{
 	constructor(from, to, topic, content, state, priority){
 		this.idkey = undefined;
@@ -8,6 +10,21 @@ class Ticket{
 		this.state = state;
 		this.priority = priority;
 	}
+
+	/*
+	State {
+		PENDING: 1,
+		APPROVED: 2,
+		REJECTED: 3,
+		DONE: 4
+	}
+
+	Priority {
+		URGENT: 1,
+		MEDIUM: 2,
+		SLOW: 3
+	}
+	*/
 
 	getFrom(){
 		return this.from;
@@ -25,19 +42,15 @@ class Ticket{
 		return this.priority;
 	}
 
-	//Nivel de prioridad, donde 0 sería el nivel más alto de prioridad. (A definir)
-	getLevelOfPriority(){
-		if(this.priority = 'bajo'){
-			return 2;
-		}
-		if(this.priority = 'medio'){
-			return 1;
-		}
-		if(this.priority = 'urgente'){
-			return 0;
-		}
-		return 3;
+	setState(state){
+		this.state = state;
 	}
+
+	setPriority(priority){
+		this.priority = priority;
+	}
+
+	
 }
 
 module.exports = {Ticket};

@@ -8,6 +8,12 @@ const e = require('../model/Employee');
 const employee1 = new e.Employee("joey","ramone","moncho","manager")
 const ticket1 = "tick1";
 
+const t = require('../model/Ticket');
+const ticket2 = new t.Ticket("Turner","Turner2","prueba","ticket de prueba asd", 2, 3)
+const ticket3 = new t.Ticket("Ripo","Pipo","testingggggg","Esto es un ticket", 4, 2)
+const ticket4 = new t.Ticket("NN","HH","test","very dificult", 3, 1)
+
+
 describe('Employee', function() {
     describe('#getName()', function() {
         it('should return employee names', function() {
@@ -59,4 +65,34 @@ describe('Employee', function() {
             assert.equal(employee1.isHisAlias("moncholo"),true);
         });
     });
+
+    /*
+    describe('#changeStateTicket()', function() {
+        it('should change the state of the ticket to 3', function() {
+            employee1.changeStateTicket(ticket1, 3)  
+            assert.equal(ticket2.getState(),3);
+        });
+    });
+    
+
+    describe('#sortInBoxByPriority()', function(){
+        it('should sort the in box array by priority', function(){
+            employee1.addToInbox(ticket2);
+            employee1.addToInbox(ticket3);
+            employee1.addToInbox(ticket4);
+            employee1.sortInBoxByPriority();
+            assert.equal(employee1.getInbox(), [ticket4, ticket3, ticket2]);
+        })
+    })
+
+    describe('#sortInBoxByState()', function(){
+        it('should sort the in box array by state', function(){
+            employee1.addToInbox(ticket2);
+            employee1.addToInbox(ticket3);
+            employee1.addToInbox(ticket4);
+            employee1.sortInBoxByState();
+            assert.equal(employee1.getInbox(), [ticket3, ticket4, ticket2]);
+        })
+    })
+    */
 });
