@@ -4,7 +4,7 @@ const employeeModule = require('../../model/Employee');
 
 const system = require('../../bbdd');
 
-router.get('/listEmployees', (req, res, next) => {
+router.get('/listAllEmployeesInSystem', (req, res, next) => {
 	const list = system.getEmployees()
 	res.status(200).json({
 		method: 'GET',
