@@ -5,7 +5,9 @@ var assert = require('assert');
 //--------------------------------------------------------------------------------------------------------------------------------------------
 
 const e = require('../model/Employee');
-const employee1 = new e.Employee("joey","ramone","moncho","manager")
+const employee1 = new e.Employee("joey","ramone","@moncho","manager");
+const anna = new e.Employee('Anna', 'Smith', '@anna', 'Developer');
+const marie = new e.Employee('Marie', 'Smith', '@marie', 'Developer');
 const ticket1 = "tick1";
 
 describe('Employee', function() {
@@ -23,7 +25,7 @@ describe('Employee', function() {
 
     describe('#getAlias()', function() {
         it('should return employee alias', function() {
-            assert.equal(employee1.getAlias(), "moncho");
+            assert.equal(employee1.getAlias(), "@moncho");
         });
     });
 
@@ -35,8 +37,8 @@ describe('Employee', function() {
 
     describe('#getChangeAlias()', function() {
         it('should change employee alias', function() {
-            employee1.changeAlias("moncholo");  
-            assert.equal(employee1.getAlias(), "moncholo");
+            employee1.changeAlias("@moncholo");  
+            assert.equal(employee1.getAlias(), "@moncholo");
         });
     });
 
@@ -56,7 +58,16 @@ describe('Employee', function() {
 
     describe('#isHisAlias()', function() {
         it('should check if its his alias', function() {  
-            assert.equal(employee1.isHisAlias("moncholo"),true);
+            assert.equal(employee1.isHisAlias("@moncholo"),true);
+        });
+    });
+
+    describe('#sendTicketsToEmployees', function(){
+        it('should send tickets to employees', function(){
+            var list = [anna,marie]; 
+            employee1.sendTicketsToEmployees(list,ticket1);
+            assert.equal(anna.getAmountOfTicketsFromInbox(), 1);
+            assert.equal(marie.getAmountOfTicketsFromInbox(),1);
         });
     });
 });

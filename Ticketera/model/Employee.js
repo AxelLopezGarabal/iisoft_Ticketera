@@ -73,6 +73,14 @@ class Employee{
 	changeStateTicketToDone(ticket){
 		ticket.setTicketDone();
 	}
+
+	sendTicketsToEmployees(employees,ticket){
+		employees.forEach(function(element){
+			element.addToInbox(ticket);
+		});
+		this.addToOutbox(ticket);
+	}
+
 }
 
 module.exports = {Employee};
