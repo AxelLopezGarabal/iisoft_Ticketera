@@ -90,6 +90,14 @@ class Employee{
 	changePriorityTicket(ticket, priority){
 		ticket.setPriority(priority)
 	}
+
+	sendTicketsToEmployees(employees,ticket){
+		employees.forEach(function(element){
+			element.addToInbox(ticket);
+		});
+		this.addToOutbox(ticket);
+	}
+
 }
 
 module.exports = {Employee};
