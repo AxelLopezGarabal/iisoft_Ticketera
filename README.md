@@ -14,6 +14,8 @@ Nro | Nombre | Legajo | Mail
 
 ### Tests coverage
 
+[![codecov](https://codecov.io/gh/juanhualampa/iisoft_Ticketera/branch/master/graph/badge.svg)](https://codecov.io/gh/juanhualampa/iisoft_Ticketera)
+
 ### Backlog
 [Trello](https://trello.com/b/WCATcekV)
 
