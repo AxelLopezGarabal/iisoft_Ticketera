@@ -14,5 +14,6 @@ before_install:
   - npm i -g npm@5.5.1
   - npm install
   - npm test
+  - npm report-coverage
 ##TODO: se debe testear el run?
 ##  - npm start

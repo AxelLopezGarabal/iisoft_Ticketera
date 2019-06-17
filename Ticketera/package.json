@@ -4,8 +4,9 @@
   "description": "ver la documentacion",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "test": "nyc mocha",
+    "report-coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
   },
   "repository": {
     "type": "git",
