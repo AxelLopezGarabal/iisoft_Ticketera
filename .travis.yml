@@ -19,6 +19,6 @@ script:
 
 after_success:
 ##  - istanbul cover ./node_modules/mocha/bin/_mocha --reporter lcovonly -- -R spec
-  - npm report-coverage
+  - npm run report-coverage
   - codecov
 
