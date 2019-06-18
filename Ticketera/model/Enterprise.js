@@ -1,4 +1,4 @@
-class Enterprice{
+class Enterprise{
 	constructor(name){
 		this.name = name;
 		this.employees = [];
@@ -31,4 +31,4 @@ class Enterprice{
 
 }
 
-module.exports = {Enterprice};
+module.exports = {Enterprise};
