@@ -7,36 +7,36 @@ class System{
 	constructor(employees){
 		this.employees = employees;
 		this.workgroups = [];
-		this.enterprices = [];
+		this.enterprises = [];
 	}
 
-	getEnterpriceByName(enterpriceName){
-		for(var i=0; i < this.enterprices.length; i++){
-			if(this.enterprices[i].isHisName(enterpriceName)){
-				return this.enterprices[i];
+	getEnterpriseByName(enterpriseName){
+		for(var i=0; i < this.enterprises.length; i++){
+			if(this.enterprises[i].isHisName(enterpriseName)){
+				return this.enterprises[i];
 			}
 		}
 	}
 
-	registerEnterprice(newEnterprice){
-		this.enterprices.push(newEnterprice);
+	registerEnterprise(newEnterprise){
+		this.enterprises.push(newEnterprise);
 	}
 
-	existEnterpriceWithName(enterpriceName){
+	existEnterpriseWithName(enterpriseName){
 		var result = false;
-		for(var i=0; i < this.enterprices.length; i++){
-				result = result || this.enterprices[i].isHisName(enterpriceName);
+		for(var i=0; i < this.enterprises.length; i++){
+				result = result || this.enterprises[i].isHisName(enterpriseName);
 		}
 		return result;
 	}
 
-	getEmployeesFromEnterpriceWithName(enterpriceName){
-		this.getEnterpriceByName(enterpriceName).getEmployees();
+	getEmployeesFromEnterpriseWithName(enterpriseName){
+		this.getEnterpriseByName(enterpriseName).getEmployees();
 	}
 
-	addEmployeeWithAliasToEnterpriceWithName(employeeAlias, enterpriceName){
+	addEmployeeWithAliasToEnterpriseWithName(employeeAlias, enterpriseName){
 		const employee = this.getEmployeeByAlias(employeeAlias);
-		this.getEnterpriceByName(enterpriceName).addEmployee(employee);
+		this.getEnterpriseByName(enterpriseName).addEmployee(employee);
 	}
 
 	getEmployees(){
@@ -47,8 +47,8 @@ class System{
 		return this.workgroups;
 	}
 
-	getEnterprices(){
-		return this.enterprices;
+	getEnterprises(){
+		return this.enterprises;
 	}
 
 	registerEmployee(newEmployee){
@@ -83,7 +83,6 @@ class System{
 		}
 	}
 
-	//TODO: check
 	getMemberByAlias(alias){
 		let x = this.getEmployeeByAlias(alias);
 		let member = Object.is(x, undefined) ? this.getWorkgroupByAlias(alias) : x;
