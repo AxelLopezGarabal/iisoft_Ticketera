@@ -83,6 +83,7 @@ class System{
 		}
 	}
 
+	//TODO: todas las llamadas a empleado / grupo deberían ser directamente a éste método
 	getMemberByAlias(alias){
 		let x = this.getEmployeeByAlias(alias);
 		let member = Object.is(x, undefined) ? this.getWorkgroupByAlias(alias) : x;
@@ -100,7 +101,7 @@ class System{
 		const employee = this.getEmployeeByAlias(alias);
 		return this.reduceInfoFromTickets(employee.getInbox())
 	}
-	//TODO: check
+
 	getInboxOfMemberWithAlias(alias){
 		const member = this.getMemberByAlias(alias);
 		return this.reduceInfoFromTickets(member.getInbox())
@@ -127,7 +128,7 @@ class System{
 		const employee = this.getEmployeeByAlias(paramAlias);
 		return employee.getAmountOfTicketsFromInbox() >= paramIndex;
 	}
-	//TODO: check
+
 	verifyIndexForMemberInbox(paramIndex, paramAlias){
 		const member = this.getMemberByAlias(paramAlias);
 		return member.getAmountOfTicketsFromInbox() >= paramIndex;
@@ -137,7 +138,7 @@ class System{
 		const employee = this.getEmployeeByAlias(paramAlias);
 		return employee.getTicketNFromInbox(paramIndex);
 	}
-	//TODO: check
+
 	getTicketInIndexFromMemberInbox(paramIndex, paramAlias){
 		const member = this.getMemberByAlias(paramAlias);
 		return member.getTicketNFromInbox(paramIndex);
@@ -146,11 +147,6 @@ class System{
 	verifyIndexForEmployeeOutbox(paramIndex, paramAlias){
 		const employee = this.getEmployeeByAlias(paramAlias);
 		return employee.getAmountOfTicketsFromOutbox() >= paramIndex;
-	}
-
-	getTicketInIndexFromEmployeeInbox(paramIndex, paramAlias){
-		const employee = this.getEmployeeByAlias(paramAlias);
-		return employee.getTicketNFromInbox(paramIndex);
 	}
 
 	getTicketInIndexFromEmployeeOutbox(paramIndex, paramAlias){

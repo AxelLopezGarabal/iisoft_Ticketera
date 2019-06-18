@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 
 const ticketRoutes = require('./api/routes/ticket');
 const employeeRoutes = require('./api/routes/employee');
-const enterpriceRoutes = require('./api/routes/enterprice');
+const enterpriseRoutes = require('./api/routes/enterprise');
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: true}));
@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 
 app.use('/ticket', ticketRoutes);
 app.use('/employee', employeeRoutes);
-app.use('/enterprice', enterpriceRoutes);
+app.use('/enterprise', enterpriseRoutes);
 
 
 app.use((req, res, next)=>{
