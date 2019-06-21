@@ -1,4 +1,4 @@
-var assert = require('assert');
+/*var assert = require('assert');
 
 const workgroupModule = require('../model/Workgroup');
 const employeeModule = require('../model/Employee');
@@ -22,4 +22,4 @@ describe('Workgroup', function() {
     });
 
 
-});
+});*/

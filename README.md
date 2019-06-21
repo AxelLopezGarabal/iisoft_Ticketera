@@ -14,13 +14,16 @@ Nro | Nombre | Legajo | Mail
 
 ### Tests coverage
 
+[![codecov](https://codecov.io/gh/juanhualampa/iisoft_Ticketera/branch/master/graph/badge.svg)](https://codecov.io/gh/juanhualampa/iisoft_Ticketera)
+
 ### Backlog
 [Trello](https://trello.com/b/WCATcekV)
 
 
 ## Detalles
-  BBDD >> MongoDB(Mongo Atlas > (https://www.mongodb.com/cloud/atlas)
-  lenguaje >> Javascript(Mocha para el testing > https://mochajs.org/)
+BBDD >> MongoDB(Mongo Atlas > (https://www.mongodb.com/cloud/atlas)
+
+lenguaje >> Javascript(Mocha para el testing > https://mochajs.org/)
 
 
 ## Detalles de la estructura del proyecto
@@ -35,3 +38,6 @@ En la carpeta Documentacion se hallan/colocaran todos los archivos correspondien
 
 [Sprint 3](Documentation/sprints/sprint3)
 
+[Sprint 4](Documentation/sprints/sprint4)
+
+[Sprint 5](Documentation/sprints/sprint5)

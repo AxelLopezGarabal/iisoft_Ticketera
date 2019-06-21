@@ -1,3 +1,5 @@
+const employeeModule = require('./Employee');
+
 class Employee{
 	constructor(name, lastname, alias, position){
 		this.idkey = undefined;

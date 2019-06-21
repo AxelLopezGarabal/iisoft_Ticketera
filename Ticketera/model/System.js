@@ -1,115 +1,94 @@
-const employeeModule = require('./Employee');
-const workgroupModule = require('./Workgroup');
+const enterpriseModule = require('./Enterprise');
 const ticketModule = require('./Ticket');
 const reducedTicketModule  = require('./ReducedTicket');
-
+/*
+  El sistema es el core de la aplicación, contiene:
+   - una lista de todos los empleados (a título informativo, ya que los empleados corresponden a cada empresa)
+   - una lista con todas las empresas
+*/
 class System{
-	constructor(employees){
-		this.employees = employees;
-		this.workgroups = [];
-		this.enterprices = [];
+	constructor(){
+		this.employees = []; //TODO: esto debería quedar?
+		this.enterprises = [];
 	}
 
-	getEnterpriceByName(enterpriceName){
-		for(var i=0; i < this.enterprices.length; i++){
-			if(this.enterprices[i].isHisName(enterpriceName)){
-				return this.enterprices[i];
+	getEnterpriseByName(enterpriseName){
+		for(var i=0; i < this.enterprises.length; i++){
+			if(this.enterprises[i].isHisName(enterpriseName)){
+				return this.enterprises[i];
 			}
 		}
 	}
 
-	registerEnterprice(newEnterprice){
-		this.enterprices.push(newEnterprice);
+	registerEnterprise(newEnterprise){
+		this.enterprises.push(newEnterprise);
 	}
 
-	existEnterpriceWithName(enterpriceName){
+	existEnterpriseWithName(enterpriseName){
 		var result = false;
-		for(var i=0; i < this.enterprices.length; i++){
-				result = result || this.enterprices[i].isHisName(enterpriceName);
+		for(var i=0; i < this.enterprises.length; i++){
+				result = result || this.enterprises[i].isHisName(enterpriseName);
 		}
 		return result;
 	}
 
-	getEmployeesFromEnterpriceWithName(enterpriceName){
-		this.getEnterpriceByName(enterpriceName).getEmployees();
+	getEmployeesFromEnterpriseWithName(enterpriseName){
+		const enterprise = this.getEnterpriseByName(enterpriseName);
+		return enterprise.getEmployees();
 	}
 
-	addEmployeeWithAliasToEnterpriceWithName(employeeAlias, enterpriceName){
-		const employee = this.getEmployeeByAlias(employeeAlias);
-		this.getEnterpriceByName(enterpriceName).addEmployee(employee);
-	}
-
-	getEmployees(){
-		return this.employees;
-	}
-
-	getWorkgroups(){
-		return this.workgroups;
-	}
-
-	getEnterprices(){
-		return this.enterprices;
-	}
-
-	registerEmployee(newEmployee){
-		this.employees.push(newEmployee);
-	}
-
-	registerWorkgroup(_workgroup){
-		this.workgroups.push(_workgroup);
-	}
-
-	existEmployeeWithAlias(employeeAlias){
-		let res = false;
-		for(var i=0; i < this.employees.length; i++){
-			res = res || (this.employees[i].getAlias() == employeeAlias);
-		}
-		return res;
-	}
-
-	getEmployeeByAlias(employeeAlias){
-		for(var i=0; i < this.employees.length; i++){
-			if(this.employees[i].isHisAlias(employeeAlias)){
-				return this.employees[i];
-			}
-		}
-	}
-
-	getWorkgroupByAlias(alias){
-		for(var i=0; i < this.workgroups.length; i++){
-			if(this.workgroups[i].isHisAlias(alias)){
-				return this.workgroups[i];
-			}
-		}
-	}
-
-	//TODO: check
-	getMemberByAlias(alias){
-		let x = this.getEmployeeByAlias(alias);
-		let member = Object.is(x, undefined) ? this.getWorkgroupByAlias(alias) : x;
-		return member;
-	}
 	
+	//TODO: (enterpriseName, {params})
+	addEmployeeToEnterpriseWithNameAndParams(enterpriseName, name, lastname, alias, position){
+		const enterprise = this.getEnterpriseByName(enterpriseName);
+		enterprise.createEmployee(name, lastname, alias, position);
+	}
+
+	addWorkgroupToEnterpriseWithNameAndParams(enterpriseName, groupName){
+		const enterprise = this.getEnterpriseByName(enterpriseName);
+		enterprise.createWorkgroup(name, groupName);
+	}
+
+
+	existEmployeeWithAliasInEnterpriseWithName(memberAlias, enterpriseName){
+		const enterprise = this.getEnterpriseByName(enterpriseName);
+		return enterprise.existEmployeeWithAlias(memberAlias);
+	}
+
+	getMemberWithAliasFromEnterpriseWithName(memberAlias, enterpriseName){
+		const enterprise = this.getEnterpriseByName(enterpriseName);
+		return enterprise.getMemberByAlias(memberAlias);
+	}
+
+	getEnterprises(){
+		return this.enterprises;
+	}
 
 	// enviar ticket a grupo o empleado
-	sendTicketTo(ticket, aliasDestiny, aliasOrigin){
-		aliasOrigin.addToOutbox(ticket);
-		aliasDestiny.addToInbox(ticket);
+	sendTicketTo(enterpriseName, ticket, aliasOrigin, aliasDestiny){
+		// busco empleados / grupo
+		const enterprise = this.getEnterpriseByName(enterpriseName);
+		const sender = enterprise.getMemberByAlias(aliasOrigin);
+		const receiver = enterprise.getMemberByAlias(aliasDestiny);
+		// envio ticket
+		sender.addToOutbox(ticket);
+		receiver.addToInbox(ticket);
 	}
 
-	getInboxOfEmployeeWithAlias(alias){
-		const employee = this.getEmployeeByAlias(alias);
-		return this.reduceInfoFromTickets(employee.getInbox())
-	}
-	//TODO: check
-	getInboxOfMemberWithAlias(alias){
-		const member = this.getMemberByAlias(alias);
-		return this.reduceInfoFromTickets(member.getInbox())
+
+	// INBOX / OUTBOX METHODS
+	getInboxOfMemberWithAlias(enterpriseName, alias){
+		const enterprise = this.getEnterpriseByName(enterpriseName);
+		const member = enterprise.getMemberByAlias(alias);
+
+		return this.reduceInfoFromTickets(member.getInbox());
 	}
 
-	getOutboxOfTheEmployeeWithAlias(alias){
-		const employee = this.getEmployeeByAlias(alias);
-		return this.reduceInfoFromTickets(employee.getOutbox());
+	getOutboxOfTheEmployeeWithAlias(enterpriseName, alias){
+		const enterprise = this.getEnterpriseByName(enterpriseName);
+		const member = enterprise.getMemberByAlias(alias);
+
+		return this.reduceInfoFromTickets(member.getOutbox());
 	}
 
 	reduceInfoFromTickets(listOfTickets){
@@ -124,40 +103,36 @@ class System{
 		return newListOfTickets;
 	}
 
-	verifyIndexForEmployeeInbox(paramIndex, paramAlias){
-		const employee = this.getEmployeeByAlias(paramAlias);
-		return employee.getAmountOfTicketsFromInbox() >= paramIndex;
-	}
-	//TODO: check
-	verifyIndexForMemberInbox(paramIndex, paramAlias){
-		const member = this.getMemberByAlias(paramAlias);
+	verifyIndexForEmployeeInbox(enterpriseName, paramIndex, paramAlias){
+		const member = this.getMemberWithAliasFromEnterpriseWithName(paramAlias, enterpriseName);
 		return member.getAmountOfTicketsFromInbox() >= paramIndex;
 	}
 
-	getTicketInIndexFromEmployeeInbox(paramIndex, paramAlias){
-		const employee = this.getEmployeeByAlias(paramAlias);
+	verifyIndexForMemberInbox(enterpriseName, paramIndex, paramAlias){
+		const member = this.getMemberWithAliasFromEnterpriseWithName(paramAlias, enterpriseName);
+		return member.getAmountOfTicketsFromInbox() >= paramIndex;
+	}
+
+	getTicketInIndexFromEmployeeInbox(enterpriseName, paramIndex, paramAlias){
+		const member = this.getMemberWithAliasFromEnterpriseWithName(paramAlias, enterpriseName);
 		return employee.getTicketNFromInbox(paramIndex);
 	}
-	//TODO: check
-	getTicketInIndexFromMemberInbox(paramIndex, paramAlias){
-		const member = this.getMemberByAlias(paramAlias);
+
+	getTicketInIndexFromMemberInbox(enterpriseName, paramIndex, paramAlias){
+		const member = this.getMemberWithAliasFromEnterpriseWithName(paramAlias, enterpriseName);
 		return member.getTicketNFromInbox(paramIndex);
 	}
 
-	verifyIndexForEmployeeOutbox(paramIndex, paramAlias){
-		const employee = this.getEmployeeByAlias(paramAlias);
+	verifyIndexForEmployeeOutbox(enterpriseName, paramIndex, paramAlias){
+		const member = this.getMemberWithAliasFromEnterpriseWithName(paramAlias, enterpriseName);
 		return employee.getAmountOfTicketsFromOutbox() >= paramIndex;
 	}
 
-	getTicketInIndexFromEmployeeInbox(paramIndex, paramAlias){
-		const employee = this.getEmployeeByAlias(paramAlias);
-		return employee.getTicketNFromInbox(paramIndex);
-	}
-
-	getTicketInIndexFromEmployeeOutbox(paramIndex, paramAlias){
-		const employee = this.getEmployeeByAlias(paramAlias);
+	getTicketInIndexFromEmployeeOutbox(enterpriseName, paramIndex, paramAlias){
+		const member = this.getMemberWithAliasFromEnterpriseWithName(paramAlias, enterpriseName);
 		return employee.getTicketNFromOutbox(paramIndex);
 	}
+
 }
 
 module.exports = {System};

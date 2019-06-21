@@ -2,85 +2,146 @@
 var assert = require('assert');
 
 const systemModule = require('../model/System');
+const enterpriseModule = require('../model/Enterprise');
 const employeeModule = require('../model/Employee');
 const ticketModule = require('../model/Ticket');
 const workgroupModule = require('../model/Workgroup');
-const boardModule = require('../model/Billboard');
 
-const system = new systemModule.System([]);
-const anna = new employeeModule.Employee('Anna', 'Smith', '@anna', 'Developer');
-const marie = new employeeModule.Employee('Marie', 'Smith', '@marie', 'Developer');
+const system = new systemModule.System();
+const emptySystem = new systemModule.System();
 
-const board = new boardModule.Billboard();
-const devs = new workgroupModule.Workgroup('#devs', board);
+const testCompany = new enterpriseModule.Enterprise('testCo');
+
+system.registerEnterprise(testCompany);
+//const marie = new employeeModule.Employee('Marie', 'Smith', '@marie', 'Developer');
+//system.sendTicketTo(ticket, devs, anna);
+
+describe('System - Enterprises', function() {
+
+  describe('#getEnterprises()', function() {
+    it('should return an empty array', function() {
+      assert.equal(emptySystem.getEnterprises().length, 0);
+    });
+  });
+  
+  //TODO: EXCEPTION ?
+  describe('#notExistEnterpriseWithName()', function() {
+    it('should return none enterprise with name', function() {
+      assert.equal(emptySystem.existEnterpriseWithName('testCo'), 0);
+    });
+  });
+  
+  describe('#getEnterprises()', function() {
+    it('should return a non empty array', function() {
+      assert.equal(system.getEnterprises().length, 1);
+    });
+  });
+  
+  describe('#existEnterpriseWithName()', function() {
+    it('should return enterprise with name', function() {
+      assert.ok(system.existEnterpriseWithName('testCo'));
+    });
+  });
+  
+});
 
 
 describe('System - Employees & Workgroups', function() {
-  
-  // EMPLOYEES
+
   describe('#registerEmployee()', function() {
-    it('should add a employee to the system', function() {
-      assert.equal(system.getEmployees().length, 0);
+    it('should add a employee to an enterprise in the system', function() {
+      assert.equal(system.getEmployeesFromEnterpriseWithName('testCo').length, 0);
 
-      system.registerEmployee(anna);
+      system.addEmployeeToEnterpriseWithNameAndParams('testCo', 'Anna', 'Smith', '@anna', 'Developer');
 
-      assert.equal(system.getEmployees().length, 1);
-      assert.equal(system.getEmployees()[0].getAlias(), '@anna');
+      assert.equal(system.getEmployeesFromEnterpriseWithName('testCo').length, 1);
+      assert.equal(system.getMemberWithAliasFromEnterpriseWithName('@anna', 'testCo').getAlias(), '@anna');
+      assert.equal(system.getMemberWithAliasFromEnterpriseWithName('@anna', 'testCo').getName(), 'Anna');
     });
   });
-   
-  describe('#getEmployees()', function() {
-    it('should return the list of Employees', function() {
-      assert.equal(system.getEmployees().length, 1);
-    });
-  });
-   
+  
   describe('#existEmployeeWithAlias(employeeAlias)', function() {
     it('should return true if exist the employee with that alias else false', function() {
-
-      system.registerEmployee(marie);
-
-      assert.equal(system.existEmployeeWithAlias('@marie'), true);
-      assert.equal(system.existEmployeeWithAlias('@Anna'), false);
+      assert.equal(system.existEmployeeWithAliasInEnterpriseWithName('@anna', 'testCo'), true);
+      assert.equal(system.existEmployeeWithAliasInEnterpriseWithName('@marie', 'testCo'), false);
     });
   });
 
+  //TODO: es algo parecido al test anterior
   describe('#getEmployeeByAlias(employeeAlias)', function() {
     it('should return the employee with that alias', function() {
-      system.registerEmployee(anna);
-   	  assert.equal(system.getEmployeeByAlias('@anna'), anna);
+      assert.equal(system.getMemberWithAliasFromEnterpriseWithName('@anna', 'testCo').getAlias(), '@anna');
+      assert.equal(system.getMemberWithAliasFromEnterpriseWithName('@anna', 'testCo').getName(), 'Anna');
     });
   });
 
-
-  // WORKGROUPS
+  /*
+  TODO: ver esto
+  // WORKGROUPS 
   describe('#registerWorkgroup()', function() {
-    it('should add a workgroup to the system', function() {
+    it('should add a workgroup to an enterprise of the system', function() {
       assert.equal(system.getWorkgroups().length, 0);
+      system.registerWorkgroupToEnterprise(devs);
 
       system.registerWorkgroup(devs);
       assert.equal(system.getWorkgroups().length, 1);
       assert.equal(system.getWorkgroups()[0].getAlias(), '#devs');
     });
   });
+  */
 
-  // EMPLOYEES & WORKGROUPS
-  describe('#getMemberEmployeeByAlias(employeeAlias)', function() {
-    it('should return member (employee) with that alias', function() {
+});
 
-      system.registerEmployee(anna);
-   	  assert.equal(system.getMemberByAlias('@anna'), anna);
-    });
-  });
+/*
+const devs = new workgroupModule.Workgroup('#devs', board);
 
-  describe('#getMemberWorkgroupByAlias(employeeAlias)', function() {
-    it('should return member (workgroup) with that alias', function() {
+const topic = 'bug #1';
+const content = 'test content';
+const state = 'pendiente';
+const priority = 'alto';
+const ticket = new ticketModule.Ticket('@anna', '#devs', topic, content, state, priority);
+*/
 
-      system.registerWorkgroup(devs);
-   	  assert.equal(system.getMemberByAlias('#devs'), devs);
-    });
-  });
-
-
+describe('System - Tickets inbox & outbox', function() {
   
+  describe('#verifyIndexForMemberInbox(index, employeeAlias)', function() {
+    it('should return true or false if the amount of tickets that the employee has is greater of equal to the index', function() {
+      assert.equal(system.verifyIndexForMemberInbox('testCo', 0, '@anna'), true);
+    });
+  });
+/*
+  describe('#verifyIndexForMemberInbox(index, workgroupAlias)', function() {
+    it('should return true or false if the amount of tickets that the workgroup has is greater of equal to the index', function() {
+      assert.equal(system.verifyIndexForMemberInbox('testCo', 1, '#devs'), true);
+    });
+  });
+
+  describe('#getTicketInIndexFromMemberInbox(index, workgroupAlias)', function() {
+    it('should return the ticket which is place in the index', function() {
+      const ticket = system.getTicketInIndexFromMemberInbox('testCo', 1, '@anna');
+
+      assert.equal(ticket.getFrom(), '@anna');
+      assert.equal(ticket.getTopic(), 'bug #1');
+    });
+  });
+
+  describe('#getInboxOfMemberWithAlias (workgroup)', function() {
+    it('should return the inbox of the member (workgroup) with that alias', function() {
+      
+      const inboxList = system.getInboxOfMemberWithAlias('@anna');
+      
+      assert.equal(inboxList.length, 1);
+    });
+  });
+
+  describe('#getInboxOfMemberWithAlias (employee)', function() {
+    it('should return the inbox of the member (employee) with that alias', function() {
+      
+      const inboxList = system.getInboxOfMemberWithAlias('@marie');
+      
+      assert.equal(inboxList.length, 0);
+    });
+  });
+
+  */
 });
