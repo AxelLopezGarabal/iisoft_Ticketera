@@ -26,7 +26,7 @@ Objetivos:
 | estados/prioridad en los ticket |       3 |      1 |
 | multiples receptores            |       3 |      0 |
 
-(TODO - 17/06/19)
+21 / 26 pts
 
 
 Durante el desarrollo del sprint surgió:
@@ -36,15 +36,14 @@ Durante el desarrollo del sprint surgió:
 | adicional1                      |       3 |      1 |
 | tarea adicional 2               |       3 |      0 |
 
-(TODO - 17/06/19)
 
 
 ### Conocimientos adquiridos:
 
-(TODO - 17/06/19)
+ Organización de las tareas con asignación aumentó la productividad
+
+ 
 
 
 ### A mejorar:
-
-(TODO - 17/06/19)
 
