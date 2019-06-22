@@ -9,7 +9,6 @@ const workgroupModule = require('../model/Workgroup');
 
 const system = new systemModule.System();
 const emptySystem = new systemModule.System();
-
 const testCompany = new enterpriseModule.Enterprise('testCo');
 
 system.registerEnterprise(testCompany);
@@ -75,20 +74,18 @@ describe('System - Employees & Workgroups', function() {
     });
   });
 
-  /*
-  TODO: ver esto
+  //* TODO: ver esto
   // WORKGROUPS 
   describe('#registerWorkgroup()', function() {
     it('should add a workgroup to an enterprise of the system', function() {
-      assert.equal(system.getWorkgroups().length, 0);
-      system.registerWorkgroupToEnterprise(devs);
 
-      system.registerWorkgroup(devs);
-      assert.equal(system.getWorkgroups().length, 1);
-      assert.equal(system.getWorkgroups()[0].getAlias(), '#devs');
+      assert.equal(system.getWorkgroupsFromEnterpriseWithName('testCo').length, 0);
+      system.addWorkgroupToEnterpriseWithNameAndParams('testCo', '#devs');
+      assert.equal(system.getWorkgroupsFromEnterpriseWithName('testCo').length, 1);
+      assert.equal(system.getWorkgroupsFromEnterpriseWithName('testCo')[0].getAlias(), '#devs');
     });
   });
-  */
+  //*/
 
 });
 
