@@ -46,8 +46,8 @@ describe('Enterprise', function() {
         });
     });
 
-    describe('#()', function() {
-        it('should return the enterprise name', function() {
+    describe('#addWorkgroup(workgroup)', function() {
+        it('should add a workgroup to the enterprise', function() {
             enterprise.addWorkgroup(workgroup),
             assert.equal(enterprise.getWorkgroups().length, 1);
             assert.equal(enterprise.getWorkgroups()[0], workgroup);

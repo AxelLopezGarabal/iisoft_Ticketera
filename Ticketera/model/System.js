@@ -37,6 +37,11 @@ class System{
 		return enterprise.getEmployees();
 	}
 
+	getWorkgroupsFromEnterpriseWithName(enterpriseName){
+		const enterprise = this.getEnterpriseByName(enterpriseName);
+		return enterprise.getWorkgroups();
+	}
+
 	
 	//TODO: (enterpriseName, {params})
 	addEmployeeToEnterpriseWithNameAndParams(enterpriseName, name, lastname, alias, position){
@@ -46,7 +51,7 @@ class System{
 
 	addWorkgroupToEnterpriseWithNameAndParams(enterpriseName, groupName){
 		const enterprise = this.getEnterpriseByName(enterpriseName);
-		enterprise.createWorkgroup(name, groupName);
+		enterprise.createWorkgroup(groupName);
 	}
 
 
