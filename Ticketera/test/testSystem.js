@@ -15,6 +15,13 @@ system.registerEnterprise(testCompany);
 //const marie = new employeeModule.Employee('Marie', 'Smith', '@marie', 'Developer');
 //system.sendTicketTo(ticket, devs, anna);
 
+const topic = 'bug #1';
+const content = 'test content';
+const state = 'pendiente';
+const priority = 'alto';
+const ticket = new ticketModule.Ticket('@anna', '#devs', topic, content, state, priority);
+
+
 describe('System - Enterprises', function() {
 
   describe('#getEnterprises()', function() {
@@ -74,7 +81,6 @@ describe('System - Employees & Workgroups', function() {
     });
   });
 
-  //* TODO: ver esto
   // WORKGROUPS 
   describe('#registerWorkgroup()', function() {
     it('should add a workgroup to an enterprise of the system', function() {
@@ -89,56 +95,49 @@ describe('System - Employees & Workgroups', function() {
 
 });
 
-/*
-const devs = new workgroupModule.Workgroup('#devs', board);
-
-const topic = 'bug #1';
-const content = 'test content';
-const state = 'pendiente';
-const priority = 'alto';
-const ticket = new ticketModule.Ticket('@anna', '#devs', topic, content, state, priority);
-*/
-
 describe('System - Tickets inbox & outbox', function() {
   
   describe('#verifyIndexForMemberInbox(index, employeeAlias)', function() {
     it('should return true or false if the amount of tickets that the employee has is greater of equal to the index', function() {
+      system.sendTicketTo('testCo', ticket, '@anna', '#devs')
       assert.equal(system.verifyIndexForMemberInbox('testCo', 0, '@anna'), true);
     });
   });
-/*
+
   describe('#verifyIndexForMemberInbox(index, workgroupAlias)', function() {
     it('should return true or false if the amount of tickets that the workgroup has is greater of equal to the index', function() {
       assert.equal(system.verifyIndexForMemberInbox('testCo', 1, '#devs'), true);
     });
   });
-
+  
   describe('#getTicketInIndexFromMemberInbox(index, workgroupAlias)', function() {
     it('should return the ticket which is place in the index', function() {
-      const ticket = system.getTicketInIndexFromMemberInbox('testCo', 1, '@anna');
+      //TODO: no entiendo porque aca va un 1
+      const t = system.getTicketInIndexFromMemberInbox('testCo', 1, '#devs');
 
-      assert.equal(ticket.getFrom(), '@anna');
-      assert.equal(ticket.getTopic(), 'bug #1');
+      assert.equal(t.getFrom(), '@anna');
+      assert.equal(t.getTopic(), 'bug #1');
     });
   });
 
   describe('#getInboxOfMemberWithAlias (workgroup)', function() {
     it('should return the inbox of the member (workgroup) with that alias', function() {
       
-      const inboxList = system.getInboxOfMemberWithAlias('@anna');
-      
-      assert.equal(inboxList.length, 1);
-    });
-  });
-
-  describe('#getInboxOfMemberWithAlias (employee)', function() {
-    it('should return the inbox of the member (employee) with that alias', function() {
-      
-      const inboxList = system.getInboxOfMemberWithAlias('@marie');
+      const inboxList = system.getInboxOfMemberWithAlias('testCo', '@anna');
       
       assert.equal(inboxList.length, 0);
     });
   });
 
-  */
+  /*
+  FIXME: deberiamos testear las exceptions ante la busqueda de un empleado que no existe
+  describe('#getInboxOfMemberWithAlias (employee)', function() {
+    it('should return the inbox of the member (employee) with that alias', function() {
+      
+      const inboxList = system.getInboxOfMemberWithAlias('testCo', '@marie');
+      
+      assert.equal(inboxList.length, 0);
+    });
+  });
+*/
 });
