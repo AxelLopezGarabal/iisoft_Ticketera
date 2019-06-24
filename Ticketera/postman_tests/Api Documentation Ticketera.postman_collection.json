@@ -1,0 +1,287 @@
+{
+	"info": {
+		"_postman_id": "b9e600c5-dc19-4b10-8047-5f632d0377e1",
+		"name": "Api Documentation Ticketera",
+		"description": "This is a the API documentation of the proyect ticketera. This documentation is made in Swagger to find out more about Swagger go to \n[http://swagger.io](http://swagger.io) or on \n[irc.freenode.net, #swagger](http://swagger.io/irc/).\n",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "employee",
+			"item": [
+				{
+					"name": "List the employees that are register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "Employee object that needs to be added to the system"
+						},
+						"url": {
+							"raw": "https://virtserver.swaggerhub.com/iisoft_Ticketera/Api_Documentation/1.0.0/employee/register",
+							"protocol": "https",
+							"host": [
+								"virtserver",
+								"swaggerhub",
+								"com"
+							],
+							"path": [
+								"iisoft_Ticketera",
+								"Api_Documentation",
+								"1.0.0",
+								"employee",
+								"register"
+							]
+						},
+						"description": "Multiple status values can be provided with comma separated strings"
+					},
+					"response": []
+				},
+				{
+					"name": "List the employees that are register",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://virtserver.swaggerhub.com/iisoft_Ticketera/Api_Documentation/1.0.0/employee/employee=:employeeAlias",
+							"protocol": "https",
+							"host": [
+								"virtserver",
+								"swaggerhub",
+								"com"
+							],
+							"path": [
+								"iisoft_Ticketera",
+								"Api_Documentation",
+								"1.0.0",
+								"employee",
+								"employee=:employeeAlias"
+							],
+							"variable": [
+								{
+									"key": "employeeAlias",
+									"value": "{{employeeAlias}}"
+								}
+							]
+						},
+						"description": "Multiple status values can be provided with comma separated strings"
+					},
+					"response": []
+				},
+				{
+					"name": "List the employees that are register",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://virtserver.swaggerhub.com/iisoft_Ticketera/Api_Documentation/1.0.0/employee/employee=:employeeAlias/inbox",
+							"protocol": "https",
+							"host": [
+								"virtserver",
+								"swaggerhub",
+								"com"
+							],
+							"path": [
+								"iisoft_Ticketera",
+								"Api_Documentation",
+								"1.0.0",
+								"employee",
+								"employee=:employeeAlias",
+								"inbox"
+							],
+							"variable": [
+								{
+									"key": "employeeAlias",
+									"value": "{{employeeAlias}}"
+								}
+							]
+						},
+						"description": "Multiple status values can be provided with comma separated strings"
+					},
+					"response": []
+				},
+				{
+					"name": "List the employees that are register",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://virtserver.swaggerhub.com/iisoft_Ticketera/Api_Documentation/1.0.0/employee/employee=:employeeAlias/outbox",
+							"protocol": "https",
+							"host": [
+								"virtserver",
+								"swaggerhub",
+								"com"
+							],
+							"path": [
+								"iisoft_Ticketera",
+								"Api_Documentation",
+								"1.0.0",
+								"employee",
+								"employee=:employeeAlias",
+								"outbox"
+							],
+							"variable": [
+								{
+									"key": "employeeAlias",
+									"value": "{{employeeAlias}}"
+								}
+							]
+						},
+						"description": "Multiple status values can be provided with comma separated strings"
+					},
+					"response": []
+				},
+				{
+					"name": "List the employees that are register",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://virtserver.swaggerhub.com/iisoft_Ticketera/Api_Documentation/1.0.0/employee/employee=:employeeAlias/inbox/ticket=:index",
+							"protocol": "https",
+							"host": [
+								"virtserver",
+								"swaggerhub",
+								"com"
+							],
+							"path": [
+								"iisoft_Ticketera",
+								"Api_Documentation",
+								"1.0.0",
+								"employee",
+								"employee=:employeeAlias",
+								"inbox",
+								"ticket=:index"
+							],
+							"variable": [
+								{
+									"key": "employeeAlias",
+									"value": "{{employeeAlias}}"
+								},
+								{
+									"key": "index",
+									"value": "{{index}}"
+								}
+							]
+						},
+						"description": "Multiple status values can be provided with comma separated strings"
+					},
+					"response": []
+				},
+				{
+					"name": "List the employees that are register",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://virtserver.swaggerhub.com/iisoft_Ticketera/Api_Documentation/1.0.0/employee/employee=:employeeAlias/outbox/ticket=:index",
+							"protocol": "https",
+							"host": [
+								"virtserver",
+								"swaggerhub",
+								"com"
+							],
+							"path": [
+								"iisoft_Ticketera",
+								"Api_Documentation",
+								"1.0.0",
+								"employee",
+								"employee=:employeeAlias",
+								"outbox",
+								"ticket=:index"
+							],
+							"variable": [
+								{
+									"key": "employeeAlias",
+									"value": "{{employeeAlias}}"
+								},
+								{
+									"key": "index",
+									"value": "{{index}}"
+								}
+							]
+						},
+						"description": "Multiple status values can be provided with comma separated strings"
+					},
+					"response": []
+				}
+			],
+			"description": "Folder for employee"
+		},
+		{
+			"name": "enterprise",
+			"item": [
+				{
+					"name": "List All Enterprises (empty)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "27b0aa6a-0630-4528-9832-b44265cfc9ec",
+								"exec": [
+									"// example using response assertions",
+									"pm.test(\"response should be okay to process\", function () { ",
+									"    pm.response.to.not.be.error; ",
+									"    //pm.response.to.have.jsonBody([]); ",
+									"    pm.response.to.have.jsonBody({ method: 'GET', enterprises: [] });",
+									"    pm.response.to.not.have.jsonBody(\"error\"); ",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9000/enterprise/listAllEnterprisesInSystem",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"enterprise",
+								"listAllEnterprisesInSystem"
+							]
+						},
+						"description": "System initial state, should return empty array"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

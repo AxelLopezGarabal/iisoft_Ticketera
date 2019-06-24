@@ -6,12 +6,17 @@ const boardModule = require('./Billboard');
   Una empresa contiene:
    - una lista de todos los empleados
    - una lista con todos los grupos (sólo inormativa, ya que la pertenencia de un empleado a un grupo la defina cada empleado)
+   - al crearse una empresa también se crea un grupo por defecto al cual todos los empleados van a ser agregados por default
 */
 class Enterprise{
 	constructor(name){
 		this.name = name;
 		this.employees = [];
 		this.workgroups = [];
+		/*
+		const group = this.createWorkgroup('default');
+		this.addWorkgroup(group);
+		*/
 	}
 
 	getName(){

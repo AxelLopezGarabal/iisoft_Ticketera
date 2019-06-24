@@ -6,6 +6,7 @@
 ### Principales
 
 -Modificacion del codigo con respecto a la empresa
+
 -Actualizacion de la documentacion de la API
 
 
@@ -17,7 +18,7 @@
 
 ## Gráfico de velocidad
 
-(TODO - 17/06/19)
+![Gráfico de velocidad](images/grafico.png)
 
 ## Retrospectiva
 
@@ -25,34 +26,17 @@ Objetivos:
 
 | Tarea                           | Puntaje | Estado |
 | ------------------------------- |---------| ------ |
-| estados/prioridad en los ticket |       3 |      1 |
-| multiples receptores            |       3 |      0 |
-
-(TODO - 17/06/19)
-
-
-Durante el desarrollo del sprint surgió:
-
-| Tarea                           | Puntaje | Estado |
-| ------------------------------- |---------| ------ |
-| adicional1                      |       3 |      1 |
-| tarea adicional 2               |       3 |      0 |
-
-(TODO - 17/06/19)
+|  Los tickets contienen un conjunto de respuestas |       1 |      1 |
+| Técnico - Verificar el traspaso de las funcionalidades del modelo a la API |       1 |      0 |
+| Enviar un ticket a un grupo de trabajo |       3 |      0 |
 
 
-### Conocimientos adquiridos:
+### Mejoras implementadas y conocimientos adquiridos:
 
-(TODO - 17/06/19)
+-Modificaciones en los tests del modelo, se aumentó la cobertura.
 
 
 ### A mejorar:
 
--Test de la API
-
-### Como Bueno:
-
--Modificaciones en los tests. Se aumento la cobertura.
-
-(TODO - 17/06/19)
+-Tests sobre la API
 
