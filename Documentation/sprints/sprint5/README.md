@@ -5,6 +5,8 @@
 
 ### Principales
 
+-Modificacion del codigo con respecto a la empresa
+-Actualizacion de la documentacion de la API
 
 
 ### Plus
@@ -45,6 +47,12 @@ Durante el desarrollo del sprint surgió:
 
 
 ### A mejorar:
+
+-Test de la API
+
+### Como Bueno:
+
+-Modificaciones en los tests. Se aumento la cobertura.
 
 (TODO - 17/06/19)
 
