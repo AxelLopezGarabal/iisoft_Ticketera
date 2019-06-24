@@ -1,11 +1,11 @@
-/*var assert = require('assert');
+var assert = require('assert');
 
 const workgroupModule = require('../model/Workgroup');
-const employeeModule = require('../model/Employee');
+//const employeeModule = require('../model/Employee');
 const workgroup = new workgroupModule.Workgroup();
-const employee = new employeeModule.Employee();
+//const employee = new employeeModule.Employee();
 
-
+/*
 describe('Workgroup', function() {
     describe('#getEmployees()', function() {
         it('should return empty array', function() {
@@ -20,6 +20,5 @@ describe('Workgroup', function() {
             assert.equal(workgroup.getEmployees().length, 1);
         });
     });
-
-
-});*/
+});
+*/

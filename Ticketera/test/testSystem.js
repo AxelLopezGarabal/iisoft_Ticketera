@@ -13,7 +13,6 @@ const testCompany = new enterpriseModule.Enterprise('testCo');
 
 system.registerEnterprise(testCompany);
 //const marie = new employeeModule.Employee('Marie', 'Smith', '@marie', 'Developer');
-//system.sendTicketTo(ticket, devs, anna);
 
 const topic = 'bug #1';
 const content = 'test content';
@@ -91,7 +90,6 @@ describe('System - Employees & Workgroups', function() {
       assert.equal(system.getWorkgroupsFromEnterpriseWithName('testCo')[0].getAlias(), '#devs');
     });
   });
-  //*/
 
 });
 
