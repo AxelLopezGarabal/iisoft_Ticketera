@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const ticketModule = require('../../model/Ticket');
 
-const system = require('../../bbdd');
+const system = require('../../mockBBDD');
 
 router.get('/', (req, res, next) => {
 	res.status(200).json({

@@ -37,6 +37,14 @@ class System{
 		return enterprise.getEmployees();
 	}
 
+	getEmployeeByAlias(employeeAlias){
+		for(var i=0; i < this.enterprises.length; i++){
+			if(this.enterprises[i].existEmployeeWithAlias(employeeAlias)){
+				return this.enterprises[i].getEmployeeByAlias(employeeAlias);
+			}
+		}
+	}
+
 	getWorkgroupsFromEnterpriseWithName(enterpriseName){
 		const enterprise = this.getEnterpriseByName(enterpriseName);
 		return enterprise.getWorkgroups();
@@ -60,6 +68,14 @@ class System{
 		return enterprise.existEmployeeWithAlias(memberAlias);
 	}
 
+	existEmployeeWithAlias(memberAlias){
+		var result = false;
+		for(var i=0; i < this.enterprises.length; i++){
+			result = result || this.enterprises[i].existEmployeeWithAlias(memberAlias);
+		}
+		return result;
+	}	
+
 	getMemberWithAliasFromEnterpriseWithName(memberAlias, enterpriseName){
 		const enterprise = this.getEnterpriseByName(enterpriseName);
 		return enterprise.getMemberByAlias(memberAlias);
@@ -80,6 +96,13 @@ class System{
 		receiver.addToInbox(ticket);
 	}
 
+	getEnterpriseOfEmployeeWithAlias(employeeAlias){
+		for(var i=0; i < this.enterprises.length; i++){
+			if(this.enterprises[i].existEmployeeWithAlias(employeeAlias)){
+				return this.enterprises[i];
+			}
+		}
+	}
 
 	// INBOX / OUTBOX METHODS
 	getInboxOfMemberWithAlias(enterpriseName, alias){
@@ -89,9 +112,23 @@ class System{
 		return this.reduceInfoFromTickets(member.getInbox());
 	}
 
+	getInboxWithAlias(alias){
+		const enterprise = this.getEnterpriseOfEmployeeWithAlias(alias);
+		const member = enterprise.getEmployeeByAlias(alias);
+
+		return this.reduceInfoFromTickets(member.getInbox());
+	}
+
 	getOutboxOfTheEmployeeWithAlias(enterpriseName, alias){
 		const enterprise = this.getEnterpriseByName(enterpriseName);
 		const member = enterprise.getMemberByAlias(alias);
+
+		return this.reduceInfoFromTickets(member.getOutbox());
+	}
+
+	getOutboxWithAlias(alias){
+		const enterprise = this.getEnterpriseOfEmployeeWithAlias(alias);
+		const member = enterprise.getEmployeeByAlias(alias);
 
 		return this.reduceInfoFromTickets(member.getOutbox());
 	}
@@ -109,7 +146,7 @@ class System{
 	}
 
 	verifyIndexForEmployeeInbox(enterpriseName, paramIndex, paramAlias){
-		const member = this.getMemberWithAliasFromEnterpriseWithName(paramAlias, enterpriseName);
+		const member = this.getEmployeeByAlias(paramAlias);
 		return member.getAmountOfTicketsFromInbox() >= paramIndex;
 	}
 
@@ -119,8 +156,8 @@ class System{
 	}
 
 	getTicketInIndexFromEmployeeInbox(enterpriseName, paramIndex, paramAlias){
-		const member = this.getMemberWithAliasFromEnterpriseWithName(paramAlias, enterpriseName);
-		return employee.getTicketNFromInbox(paramIndex);
+		const member = this.getEmployeeByAlias(paramAlias, enterpriseName);
+		return member.getTicketNFromInbox(paramIndex);
 	}
 
 	getTicketInIndexFromMemberInbox(enterpriseName, paramIndex, paramAlias){
@@ -129,13 +166,13 @@ class System{
 	}
 
 	verifyIndexForEmployeeOutbox(enterpriseName, paramIndex, paramAlias){
-		const member = this.getMemberWithAliasFromEnterpriseWithName(paramAlias, enterpriseName);
-		return employee.getAmountOfTicketsFromOutbox() >= paramIndex;
+		const member = this.getEmployeeByAlias(paramAlias);
+		return member.getAmountOfTicketsFromOutbox() >= paramIndex;
 	}
 
 	getTicketInIndexFromEmployeeOutbox(enterpriseName, paramIndex, paramAlias){
-		const member = this.getMemberWithAliasFromEnterpriseWithName(paramAlias, enterpriseName);
-		return employee.getTicketNFromOutbox(paramIndex);
+		const member = this.getEmployeeByAlias(paramAlias);
+		return member.getTicketNFromOutbox(paramIndex);
 	}
 
 }
