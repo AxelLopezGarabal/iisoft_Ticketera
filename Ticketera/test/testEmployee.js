@@ -77,14 +77,47 @@ describe('Employee', function() {
         });
     });
 
-    /*
-    describe('#changeStateTicket()', function() {
-        it('should change the state of the ticket to 3', function() {
-            employee1.changeStateTicket(ticket1, 3)  
-            assert.equal(ticket2.getState(),3);
+    describe('#getTicketNFromInbox', function(){
+        it('should return the ticket in the position N from the inbox', function(){
+            var list = [anna,marie]; 
+            employee1.sendTicketsToEmployees(list,ticket1);
+            const ticket = anna.getTicketNFromInbox(1);
+            assert.equal(ticket, ticket1);
         });
     });
-    
+
+    describe('#getAmountOfTicketsFromOutbox', function(){
+        it('should return the amount of tickets in the outbox', function(){
+            var list = [anna,marie]; 
+            marie.sendTicketsToEmployees(list,ticket1);
+            assert.equal(marie.getAmountOfTicketsFromOutbox(),1);
+        });
+    });
+
+    describe('#getTicketNFromOutbox', function(){
+        it('should return the ticket in the position N from the outbox', function(){
+            var list = [marie]; 
+            anna.sendTicketsToEmployees(list,ticket1);
+            const ticket = anna.getTicketNFromOutbox(1);
+            assert.equal(ticket, ticket1);
+        });
+    });
+
+
+    describe('#changeStateTicket()', function() {
+        it('should change the state of the ticket to a valid state', function() {
+            employee1.changeStateTicket(ticket2, 'done')  
+            assert.equal(ticket2.getState(), 'done');
+        });
+    });
+
+    describe('#changePriorityTicket()', function() {
+        it('should change the state of the ticket to a valid state', function() {
+            employee1.changePriorityTicket(ticket2, 'lower')  
+            assert.equal(ticket2.getPriority(), 'lower');
+        });
+    });
+/*    
 
     describe('#sortInBoxByPriority()', function(){
         it('should sort the in box array by priority', function(){
