@@ -1,8 +1,8 @@
 class Billboard{
     
     constructor(){
-        this.tickets = new Array();
-        this.billboard = new Array();
+        this.tickets = [];
+        this.billboard = [];
 
     }
 
@@ -18,31 +18,31 @@ class Billboard{
         this.billboard.push(billboard);
     }
 
+    getBillboard(){
+        return this.billboard;
+    }
+
     sortByPriority(){
-        var ret = new Array();
-        var cop = this.tickets;
-        cop.forEach(function(element){
-            if(cop.length = 1){
-                ret.push(cop[0]);
-                cop.splice(0,1);
-            }else{
-                var t = higherPriority(element,cop[1]);
-                if(t == element){
-                    ret.push(t);
-                }else{
-                    cop.push(t);
-                }
+        const items = this.tickets;
+        return items.sort(function (a, b) {
+            if (a.getPriority() < b.getPriority()) {
+                return 1;
             }
-            cop.splice(0,1);
+            if (a.getPriority() > b.getPriority()) {
+                return -1;
+            }
+            // a must be equal to b
+            return 0;
         });
-    return ret;
     }
 
     higherPriority(tick1, tick2){
-        if(tick1.getPriority()<=tick2.getPriority()){
+        if(tick1.getPriority() >= tick2.getPriority()){
             return tick1;
         }
-        else{return tick2;}
+        else{
+            return tick2;
+        }
     }
 }
 
