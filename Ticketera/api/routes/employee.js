@@ -71,7 +71,7 @@ router.get('/employee=:alias/inbox/ticket=:nro', (req, res, next) => {
 	}
 });
 
-//state
+//change the state of a ticket in the inbox
 router.put('/employee=:alias/inbox/state/ticket=:nro/', (req, res, next) => {
   	const paramAlias = req.params.alias;
 	const paramnro = parseInt(req.params.nro, 10);
@@ -101,7 +101,7 @@ router.put('/employee=:alias/inbox/state/ticket=:nro/', (req, res, next) => {
 	}
 });
 
-//priority
+//change the priority of a ticket in the inbox
 router.put('/employee=:alias/inbox/priority/ticket=:nro/', (req, res, next) => {
   	const paramAlias = req.params.alias;
 	const paramnro = parseInt(req.params.nro, 10);
@@ -174,7 +174,7 @@ router.get('/employee=:alias/outbox/ticket=:nro', (req, res, next) => {
 });
 
 
-//state
+//change the state of a ticket in the outbox
 router.put('/employee=:alias/outbox/state/ticket=:nro', (req, res, next) => {
   	const paramAlias = req.params.alias;
 	const paramnro = parseInt(req.params.nro, 10);
@@ -204,7 +204,7 @@ router.put('/employee=:alias/outbox/state/ticket=:nro', (req, res, next) => {
 	}
 });
 
-//priority
+//change the priority of a ticket in the outbox
 router.put('/employee=:alias/outbox/priority/ticket=:nro', (req, res, next) => {
   	const paramAlias = req.params.alias;
 	const paramnro = parseInt(req.params.nro, 10);

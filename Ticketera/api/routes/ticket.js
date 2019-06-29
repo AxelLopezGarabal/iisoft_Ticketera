@@ -11,24 +11,33 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-	const receptor = req.body.to;
-	if(!system.existEmployeeWithAlias(receptor)){
+	const employeeDestiny = req.body.to;
+	if(!system.existEmployeeWithAlias(employeeDestiny)){
 		res.status(404).json({
-			message: 'there is no employee whith name ' + receptor + ''
+			message: 'there is no employee whith name ' + employeeDestiny + '.'
 		})
 	}
-	const newTicket = new ticketModule.Ticket(req.body.from, receptor, 
+	else{
+		const newTicket = new ticketModule.Ticket(req.body.from, employeeDestiny, 
 		req.body.topic, req.body.content, req.body.state, req.body.priority);
 	
-	let employeeDestiny = system.getEmployeeByAlias(receptor);
-	let employeeOrigin  = system.getEmployeeByAlias(req.body.from);
+		let employeeOrigin  = req.body.from;
 
-	system.sendTicketTo(newTicket, employeeDestiny, employeeOrigin);
+		if(!system.getEnterpriseOfEmployeeWithAlias(employeeDestiny) == system.getEnterpriseOfEmployeeWithAlias(employeeOrigin)){
+			res.status(404).json({
+				message: 'the employee ' + employeeDestiny + ' and the employee ' + employeeOrigin + ' are from diferent enterprises'
+			})
+		}
+		else{
+			const enterprise = system.getEnterpriseOfEmployeeWithAlias(employeeDestiny);
+			system.sendTicketTo(enterprise.getName() ,newTicket, employeeDestiny, employeeOrigin);
 
-	res.status(200).json({
-		message: 'POST method',
-		createdTicket: newTicket
-	})
+			res.status(200).json({
+				message: 'POST method',
+				createdTicket: newTicket
+			});
+		}
+	}
 });
 
 router.get('/:ticketID', (req, res, next) => {
