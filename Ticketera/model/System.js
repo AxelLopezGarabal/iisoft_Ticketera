@@ -164,12 +164,12 @@ class System{
 		const member = this.getMemberWithAliasFromEnterpriseWithName(paramAlias, enterpriseName);
 		return member.getTicketNFromInbox(paramIndex);
 	}
-
+//test
 	verifyIndexForEmployeeOutbox(enterpriseName, paramIndex, paramAlias){
 		const member = this.getEmployeeByAlias(paramAlias);
 		return member.getAmountOfTicketsFromOutbox() >= paramIndex;
 	}
-
+//test
 	getTicketInIndexFromEmployeeOutbox(enterpriseName, paramIndex, paramAlias){
 		const member = this.getEmployeeByAlias(paramAlias);
 		return member.getTicketNFromOutbox(paramIndex);

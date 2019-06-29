@@ -110,7 +110,7 @@ describe('System - Tickets inbox & outbox', function() {
   
   describe('#getTicketInIndexFromMemberInbox(index, workgroupAlias)', function() {
     it('should return the ticket which is place in the index', function() {
-      //TODO: no entiendo porque aca va un 1
+      //TODO: no entiendo porque aca va un 1 -> para el usuario es el primer ticket que vee pero es el index 0
       const t = system.getTicketInIndexFromMemberInbox('testCo', 1, '#devs');
 
       assert.equal(t.getFrom(), '@anna');
@@ -129,6 +129,7 @@ describe('System - Tickets inbox & outbox', function() {
 
   /*
   FIXME: deberiamos testear las exceptions ante la busqueda de un empleado que no existe
+    => las exepciones las maneja la API, la precondicion de los metodos que involucran encontrar algo es <<"ese algo existe">> 
   describe('#getInboxOfMemberWithAlias (employee)', function() {
     it('should return the inbox of the member (employee) with that alias', function() {
       
