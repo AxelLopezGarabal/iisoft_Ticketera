@@ -54,9 +54,10 @@ class System{
 
 	
 	//TODO: (enterpriseName, {params})
-	addEmployeeToEnterpriseWithNameAndParams(enterpriseName, name, lastname, alias, position){
+	addEmployeeToEnterpriseWithNameAndParams(enterpriseName, name, lastname, alias, position, password){
 		const enterprise = this.getEnterpriseByName(enterpriseName);
-		enterprise.createEmployee(name, lastname, alias, position);
+		const hash = this.hasher.hashPassword(password);
+		enterprise.createEmployee(name, lastname, alias, position, hash);
 	}
 
 	addWorkgroupToEnterpriseWithNameAndParams(enterpriseName, groupName){
@@ -68,7 +69,7 @@ class System{
 	existEmployeeWithAliasInEnterpriseWithName(memberAlias, enterpriseName){
 		const enterprise = this.getEnterpriseByName(enterpriseName);
 		return enterprise.existEmployeeWithAlias(memberAlias);
-	}
+	}//
 
 	existEmployeeWithAlias(memberAlias){
 		var result = false;
@@ -166,12 +167,12 @@ class System{
 		const member = this.getMemberWithAliasFromEnterpriseWithName(paramAlias, enterpriseName);
 		return member.getTicketNFromInbox(paramIndex);
 	}
-//test
+
 	verifyIndexForEmployeeOutbox(enterpriseName, paramIndex, paramAlias){
 		const member = this.getEmployeeByAlias(paramAlias);
 		return member.getAmountOfTicketsFromOutbox() >= paramIndex;
 	}
-//test
+
 	getTicketInIndexFromEmployeeOutbox(enterpriseName, paramIndex, paramAlias){
 		const member = this.getEmployeeByAlias(paramAlias);
 		return member.getTicketNFromOutbox(paramIndex);

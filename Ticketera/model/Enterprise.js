@@ -45,8 +45,8 @@ class Enterprise{
 
 
 	// EMPLOYEES & WORKGROUPS
-	createEmployee(_name, _lastname, _alias, _position){
-		const employee = new employeeModule.Employee(_name, _lastname, _alias, _position);
+	createEmployee(_name, _lastname, _alias, _position, _password){
+		const employee = new employeeModule.Employee(_name, _lastname, _alias, _position, _password);
 		this.addEmployee(employee);
 	}
 

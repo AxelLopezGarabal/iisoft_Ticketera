@@ -57,7 +57,7 @@ describe('System - Employees & Workgroups', function() {
     it('should add a employee to an enterprise in the system', function() {
       assert.equal(system.getEmployeesFromEnterpriseWithName('testCo').length, 0);
 
-      system.addEmployeeToEnterpriseWithNameAndParams('testCo', 'Anna', 'Smith', '@anna', 'Developer');
+      system.addEmployeeToEnterpriseWithNameAndParams('testCo', 'Anna', 'Smith', '@anna', 'Developer', '75427542');
 
       assert.equal(system.getEmployeesFromEnterpriseWithName('testCo').length, 1);
       assert.equal(system.getMemberWithAliasFromEnterpriseWithName('@anna', 'testCo').getAlias(), '@anna');
@@ -124,6 +124,84 @@ describe('System - Tickets inbox & outbox', function() {
       const inboxList = system.getInboxOfMemberWithAlias('testCo', '@anna');
       
       assert.equal(inboxList.length, 0);
+    });
+  });
+
+  describe('#getTicketInIndexFromEmployeeOutbox', function() {
+    it('should return the ticket in the index of the outbox from the employee', function() {
+      
+      const ticket = system.getTicketInIndexFromEmployeeOutbox('testCo', 1, '@anna');
+      assert.equal(ticket, system.getEmployeeByAlias('@anna').getOutbox()[0]);
+    });
+  });
+
+  describe('#verifyIndexForEmployeeOutbox', function() {
+    it('should return true if is a valid index to return the ticket in the outbox', function() {
+      
+      assert.equal(system.verifyIndexForEmployeeOutbox('testCo', 1, '@anna'), true);
+      assert.equal(system.verifyIndexForEmployeeOutbox('testCo', 2, '@anna'), false);
+    });
+  });
+
+  describe('#getTicketInIndexFromEmployeeInbox', function() {
+    it('should return the ticket in the index of the inbox from the employee', function() {
+      //getTicketInIndexFromEmployeeInbox(enterpriseName, paramIndex, paramAlias)
+      system.addEmployeeToEnterpriseWithNameAndParams('testCo', 'Fernando', 'Ripoli', '@ripo', 'Developer', '');
+      const e = system.getEmployeeByAlias('@ripo');
+      const ticketParaRipo = new ticketModule.Ticket('@J', '@ripo', topic, content, state, priority);
+      e.addToInbox(ticketParaRipo);
+
+      assert.equal(system.getTicketInIndexFromEmployeeInbox('testCo', 1, '@ripo'), ticketParaRipo);
+
+    });
+  });  
+
+  describe('#verifyIndexForEmployeeOutbox', function() {
+    it('should return true if is a valid index to return the ticket in the inbox', function() {
+      
+      assert.equal(system.verifyIndexForEmployeeInbox('testCo', 1, '@ripo'), true);
+      assert.equal(system.verifyIndexForEmployeeInbox('testCo', 2, '@ripo'), false);
+    });
+  });
+
+  describe('#reduceInfoFromTickets', function() {
+    it('should return a list of redusedTickets', function() {
+      const ripoInbox = system.getEmployeeByAlias('@ripo').getInbox();
+
+      const inboxReduced = system.reduceInfoFromTickets(ripoInbox);
+
+      assert.equal(ripoInbox.length, inboxReduced.length);
+    });
+  });
+
+  describe('#reduceInfoFromTickets && getOutboxOfTheEmployeeWithAlias', function() {
+    it('should return the outbox of the employee', function() {
+      const annaOutbox = system.getEmployeeByAlias('@anna').getOutbox();
+
+      const outbox = system.getOutboxWithAlias('@anna');
+
+      const outboxFromEnterprice = system.getOutboxOfTheEmployeeWithAlias('testCo', '@anna');
+      assert.equal(annaOutbox.length, outbox.length);
+      assert.equal(annaOutbox.length, outboxFromEnterprice.length);
+    });
+  });
+
+  describe('#getInboxWithAlias && getInboxOfMemberWithAlias', function() {
+    it('should return the inbox of the employee', function() {
+      const ripoInbox = system.getEmployeeByAlias('@ripo').getInbox();
+
+      const inbox = system.getInboxWithAlias('@ripo');
+
+      const inboxFromEnterprice = system.getInboxOfMemberWithAlias('testCo', '@ripo');
+      assert.equal(ripoInbox.length, inbox.length);
+      assert.equal(ripoInbox.length, inboxFromEnterprice.length);
+    });
+  });
+
+  describe('#existEmployeeWithAlias', function() {
+    it('should return the outbox of the employee', function() {
+      assert.equal(system.existEmployeeWithAlias('@anna'), true);
+      assert.equal(system.existEmployeeWithAlias('@House'), false);
     });
   });
 

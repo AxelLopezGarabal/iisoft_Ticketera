@@ -80,7 +80,7 @@ class Employee{
 	}
 
 	getTicketNFromOutbox(index){
-		return this.inbox[index-1]	
+		return this.outbox[index-1]
 	}
 //test
 	changeStateTicketToDone(ticket){
@@ -90,7 +90,7 @@ class Employee{
 	changeStateTicket(ticket, state){
 		ticket.setState(state);
 	}
-//test
+
 	changePriorityTicket(ticket, priority){
 		ticket.setPriority(priority)
 	}
