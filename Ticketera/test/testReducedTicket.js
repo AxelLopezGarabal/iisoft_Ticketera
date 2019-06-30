@@ -2,6 +2,7 @@ var assert = require('assert');
 
 const reducedTicketModule = require('../model/ReducedTicket');
 
+describe('ReducedTicket', function() {
 	describe('#new', function() {
         it('should create a reduced version of a ticket', function() {
             const ticketR = new reducedTicketModule.ReducedTicket('@anna', 'sprint6', 'higher', 'denided');
@@ -11,3 +12,4 @@ const reducedTicketModule = require('../model/ReducedTicket');
             assert.equal(ticketR.getState(), 'denided');
         });
 	});
+});

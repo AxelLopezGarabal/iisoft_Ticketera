@@ -1,11 +1,13 @@
 const employeeModule = require('./Employee');
 
 class Employee{
-	constructor(name, lastname, alias, position){
+	constructor(name, lastname, alias, position, hash){
 		this.idkey = undefined;
 		this.name = name;
+		this.image = '/image/standarImage';
 		this.lastname = lastname;
 		this.alias = alias;
+		this.password = hash;
 		this.position = position;
 		this.inbox = [];
 		this.outbox = [];

@@ -1,6 +1,7 @@
 const enterpriseModule = require('./Enterprise');
 const ticketModule = require('./Ticket');
 const reducedTicketModule  = require('./ReducedTicket');
+const hasherModule = require('./Hasher');
 /*
   El sistema es el core de la aplicación, contiene:
    - una lista de todos los empleados (a título informativo, ya que los empleados corresponden a cada empresa)
@@ -10,6 +11,7 @@ class System{
 	constructor(){
 		this.employees = []; //TODO: esto debería quedar?
 		this.enterprises = [];
+		this.hasher = new hasherModule.Hasher();
 	}
 
 	getEnterpriseByName(enterpriseName){
