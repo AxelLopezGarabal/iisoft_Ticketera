@@ -178,6 +178,10 @@ class System{
 		return member.getTicketNFromOutbox(paramIndex);
 	}
 
+	verifyPasswordForEmployeeInEnterprise(enterpriseName, employeeAlias, employeePassword){
+		const member = this.getEmployeeByAlias(employeeAlias);
+		return member.verifyPassword(this.hasher.hashPassword(employeePassword));
+	}
 }
 
 module.exports = {System};

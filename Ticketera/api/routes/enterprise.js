@@ -33,6 +33,7 @@ router.post('/addEmployeeToEnterprise', (req, res, next) => {
 	var employeeName = req.body.employeeName;
 	var employeeLastname = req.body.employeeLastname;
 	var employeePosition = req.body.employeePosition;
+	var employeePassword = req.body.employeePassword;
 	var enterpriseName = req.body.enterpriseName;
 	if(!system.existEnterpriseWithName(enterpriseName)){
 			res.status(404).json({
@@ -51,7 +52,7 @@ router.post('/addEmployeeToEnterprise', (req, res, next) => {
 		}
 		else{
 			system.addEmployeeToEnterpriseWithNameAndParams(enterpriseName, employeeName, employeeLastname, 
-				employeeAlias, employeePosition);
+				employeeAlias, employeePosition, employeePassword);
 			res.status(200).json({
 				method: 'POST',
 				message: 'the enterprise ' + enterpriseName + ' has add the employee ' + employeeAlias +'.'

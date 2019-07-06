@@ -102,6 +102,9 @@ class Employee{
 		this.addToOutbox(ticket);
 	}
 
+	verifyPassword(employeePassword){
+		return this.password == employeePassword;
+	}
 }
 
 module.exports = {Employee};

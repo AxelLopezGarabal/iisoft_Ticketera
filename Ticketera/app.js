@@ -6,11 +6,13 @@ const bodyParser = require('body-parser');
 const ticketRoutes = require('./api/routes/ticket');
 const employeeRoutes = require('./api/routes/employee');
 const enterpriseRoutes = require('./api/routes/enterprise');
+const logInRoutes = require('./api/routes/logIn');
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
+app.use('/login', logInRoutes);
 app.use('/ticket', ticketRoutes);
 app.use('/employee', employeeRoutes);
 app.use('/enterprise', enterpriseRoutes);

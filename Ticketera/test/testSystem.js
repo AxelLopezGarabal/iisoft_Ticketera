@@ -57,7 +57,7 @@ describe('System - Employees & Workgroups', function() {
     it('should add a employee to an enterprise in the system', function() {
       assert.equal(system.getEmployeesFromEnterpriseWithName('testCo').length, 0);
 
-      system.addEmployeeToEnterpriseWithNameAndParams('testCo', 'Anna', 'Smith', '@anna', 'Developer', '75427542');
+      system.addEmployeeToEnterpriseWithNameAndParams('testCo', 'Anna', 'Smith', '@anna', 'Developer', 'secreto');
 
       assert.equal(system.getEmployeesFromEnterpriseWithName('testCo').length, 1);
       assert.equal(system.getMemberWithAliasFromEnterpriseWithName('@anna', 'testCo').getAlias(), '@anna');
@@ -205,6 +205,12 @@ describe('System - Tickets inbox & outbox', function() {
     });
   });
 
+  describe('#verifyPasswordForEmployeeInEnterprise', function() {
+    it('should return true if the password of the employee conside with the password passed', function() {
+      assert.equal(system.verifyPasswordForEmployeeInEnterprise('testCo', '@anna', 'secreto'), true);
+      assert.equal(system.verifyPasswordForEmployeeInEnterprise('testCo', '@anna', ' '), false);
+    });
+  });
   /*
   FIXME: deberiamos testear las exceptions ante la busqueda de un empleado que no existe
     => las exepciones las maneja la API, la precondicion de los metodos que involucran encontrar algo es <<"ese algo existe">> 

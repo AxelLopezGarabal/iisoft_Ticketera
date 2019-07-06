@@ -5,10 +5,14 @@ var assert = require('assert');
 //--------------------------------------------------------------------------------------------------------------------------------------------
 
 const e = require('../model/Employee');
+const h = require('../model/Hasher');
+
 const employee1 = new e.Employee("joey","ramone","@moncho","manager");
-const anna = new e.Employee('Anna', 'Smith', '@anna', 'Developer');
+const anna = new e.Employee('Anna', 'Smith', '@anna', 'Developer', 1509442);
 const marie = new e.Employee('Marie', 'Smith', '@marie', 'Developer');
 const ticket1 = "tick1";
+
+const hasher = new h.Hasher();
 
 const t = require('../model/Ticket');
 const ticket2 = new t.Ticket("Turner","Turner2","prueba","ticket de prueba asd", 2, 3)
@@ -117,8 +121,15 @@ describe('Employee', function() {
             assert.equal(ticket2.getPriority(), 'lower');
         });
     });
-/*    
 
+    describe('#verifyPassword', function() {
+        it('should return true if the password ones is hashed is equal to the hash of the employee', function() {
+            const passwordhashed = hasher.hashPassword('1234')
+            assert.equal(anna.verifyPassword(passwordhashed), true);
+        });
+    });
+/*    
+1234
     describe('#sortInBoxByPriority()', function(){
         it('should sort the in box array by priority', function(){
             employee1.addToInbox(ticket2);
