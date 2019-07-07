@@ -1,0 +1,886 @@
+{
+	"info": {
+		"_postman_id": "2b7c47f9-629f-43f7-ba85-c6976e2fb943",
+		"name": "Ticketera_API_test",
+		"description": "This is a the API documentation of the proyect ticketera. This documentation is made in Swagger to find out more about Swagger go to \n[http://swagger.io](http://swagger.io) or on \n[irc.freenode.net, #swagger](http://swagger.io/irc/).",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "enterprise",
+			"item": [
+				{
+					"name": "ListEnterprices",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "44d797b6-a68d-4ed2-82a3-3a8824ca1c80",
+								"exec": [
+									"pm.test(\"response should be okay to process\", function () { ",
+									"    pm.response.to.not.be.error; ",
+									"    //pm.response.to.have.jsonBody(\"[]\"); ",
+									"    pm.response.to.have.jsonBody({",
+									"    \"method\": \"GET\",",
+									"    \"enterprises\": [",
+									"        {",
+									"            \"name\": \"Enron\",",
+									"            \"employees\": [",
+									"                {",
+									"                    \"name\": \"Diana\",",
+									"                    \"image\": \"/image/standarImage\",",
+									"                    \"lastname\": \"S\",",
+									"                    \"alias\": \"@Diana\",",
+									"                    \"password\": 3526857,",
+									"                    \"position\": \"team manager\",",
+									"                    \"inbox\": [],",
+									"                    \"outbox\": []",
+									"                },",
+									"                {",
+									"                    \"name\": \"Anna\",",
+									"                    \"image\": \"/image/standarImage\",",
+									"                    \"lastname\": \"Smith\",",
+									"                    \"alias\": \"@anna\",",
+									"                    \"password\": 1970177983,",
+									"                    \"position\": \"developer\",",
+									"                    \"inbox\": [],",
+									"                    \"outbox\": []",
+									"                },",
+									"                {",
+									"                    \"name\": \"Marie\",",
+									"                    \"image\": \"/image/standarImage\",",
+									"                    \"lastname\": \"Smi\",",
+									"                    \"alias\": \"@marie\",",
+									"                    \"password\": 3083561,",
+									"                    \"position\": \"developer\",",
+									"                    \"inbox\": [],",
+									"                    \"outbox\": []",
+									"                },",
+									"                {",
+									"                    \"name\": \"Gregorie\",",
+									"                    \"image\": \"/image/standarImage\",",
+									"                    \"lastname\": \"House\",",
+									"                    \"alias\": \"@House\",",
+									"                    \"password\": 32,",
+									"                    \"position\": \"designer\",",
+									"                    \"inbox\": [",
+									"                        {",
+									"                            \"from\": \"@House\",",
+									"                            \"to\": \"@House\",",
+									"                            \"topic\": \"it sounds folky\",",
+									"                            \"content\": \"a random theme from Dr. House\",",
+									"                            \"state\": \"pendiente\",",
+									"                            \"priority\": \"baja\"",
+									"                        }",
+									"                    ],",
+									"                    \"outbox\": [",
+									"                        {",
+									"                            \"from\": \"@House\",",
+									"                            \"to\": \"@House\",",
+									"                            \"topic\": \"it sounds folky\",",
+									"                            \"content\": \"a random theme from Dr. House\",",
+									"                            \"state\": \"pendiente\",",
+									"                            \"priority\": \"baja\"",
+									"                        }",
+									"                    ]",
+									"                }",
+									"            ],",
+									"            \"workgroups\": []",
+									"        }",
+									"    ]",
+									"});",
+									"    pm.response.to.not.have.jsonBody(\"error\"); ",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:9000/enterprise/listAllEnterprisesInSystem",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"enterprise",
+								"listAllEnterprisesInSystem"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register Enterprise",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c394328f-63c1-4416-a319-af8d695792ed",
+								"exec": [
+									"pm.test(\"response should be okay to process\", function () { ",
+									"    pm.response.to.not.be.error; ",
+									"    //pm.response.to.have.jsonBody(\"[]\"); ",
+									"    pm.response.to.have.jsonBody({",
+									"    method: 'POST',",
+									"\tmessage: 'the enterprise has been add to the system'});",
+									"    pm.response.to.not.have.jsonBody(\"error\"); ",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:9000/enterprise/registerEnterprise=SEGA",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"enterprise",
+								"registerEnterprise=SEGA"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListEnterprices2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "44d797b6-a68d-4ed2-82a3-3a8824ca1c80",
+								"exec": [
+									"pm.test(\"response should be okay to process\", function () { ",
+									"    pm.response.to.not.be.error; ",
+									"    //pm.response.to.have.jsonBody(\"[]\"); ",
+									"    pm.response.to.have.jsonBody({",
+									"        \"method\": \"GET\",",
+									"    \"enterprises\": [",
+									"        {",
+									"            \"name\": \"Enron\",",
+									"            \"employees\": [",
+									"                {",
+									"                    \"name\": \"Diana\",",
+									"                    \"image\": \"/image/standarImage\",",
+									"                    \"lastname\": \"S\",",
+									"                    \"alias\": \"@Diana\",",
+									"                    \"password\": 3526857,",
+									"                    \"position\": \"team manager\",",
+									"                    \"inbox\": [],",
+									"                    \"outbox\": []",
+									"                },",
+									"                {",
+									"                    \"name\": \"Anna\",",
+									"                    \"image\": \"/image/standarImage\",",
+									"                    \"lastname\": \"Smith\",",
+									"                    \"alias\": \"@anna\",",
+									"                    \"password\": 1970177983,",
+									"                    \"position\": \"developer\",",
+									"                    \"inbox\": [],",
+									"                    \"outbox\": []",
+									"                },",
+									"                {",
+									"                    \"name\": \"Marie\",",
+									"                    \"image\": \"/image/standarImage\",",
+									"                    \"lastname\": \"Smi\",",
+									"                    \"alias\": \"@marie\",",
+									"                    \"password\": 3083561,",
+									"                    \"position\": \"developer\",",
+									"                    \"inbox\": [],",
+									"                    \"outbox\": []",
+									"                },",
+									"                {",
+									"                    \"name\": \"Gregorie\",",
+									"                    \"image\": \"/image/standarImage\",",
+									"                    \"lastname\": \"House\",",
+									"                    \"alias\": \"@House\",",
+									"                    \"password\": 32,",
+									"                    \"position\": \"designer\",",
+									"                    \"inbox\": [",
+									"                        {",
+									"                            \"from\": \"@House\",",
+									"                            \"to\": \"@House\",",
+									"                            \"topic\": \"it sounds folky\",",
+									"                            \"content\": \"a random theme from Dr. House\",",
+									"                            \"state\": \"pendiente\",",
+									"                            \"priority\": \"baja\"",
+									"                        }",
+									"                    ],",
+									"                    \"outbox\": [",
+									"                        {",
+									"                            \"from\": \"@House\",",
+									"                            \"to\": \"@House\",",
+									"                            \"topic\": \"it sounds folky\",",
+									"                            \"content\": \"a random theme from Dr. House\",",
+									"                            \"state\": \"pendiente\",",
+									"                            \"priority\": \"baja\"",
+									"                        }",
+									"                    ]",
+									"                }",
+									"            ],",
+									"            \"workgroups\": []",
+									"        },",
+									"        {",
+									"            \"name\": \"SEGA\",",
+									"            \"employees\": [],",
+									"            \"workgroups\": []",
+									"        }",
+									"    ]",
+									"});",
+									"    pm.response.to.not.have.jsonBody(\"error\"); ",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:9000/enterprise/listAllEnterprisesInSystem",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"enterprise",
+								"listAllEnterprisesInSystem"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add employee",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "eb73f825-f526-4f2c-9dd3-67da37e83c21",
+								"exec": [
+									"pm.test(\"response should be okay to process\", function () { ",
+									"    pm.response.to.not.be.error; ",
+									"    //pm.response.to.have.jsonBody(\"[]\"); ",
+									"    pm.response.to.have.jsonBody({",
+									"    method: 'POST',",
+									"\tmessage: 'the enterprise has add the employee .'});",
+									"    pm.response.to.not.have.jsonBody(\"error\"); ",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"employeeAlias\":\"@sara\",\n\t\"employeeName\":\"sara\",\n\t\"employeeLastname\":\"silva\",\n\t\"employeePosition\":\"Team manager\",\n\t\"employeePassword\":\"sara\",\n\t\"enterpriseName\":\"SEGA\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9000/enterprise/addEmployeeToEnterprise",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"enterprise",
+								"addEmployeeToEnterprise"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "employee",
+			"item": [
+				{
+					"name": "get a employee by alias",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c52a89de-f331-496f-b064-95f33472684e",
+								"exec": [
+									"pm.test(\"response should be okay to process\", function () { ",
+									"    pm.response.to.not.be.error; ",
+									"    //pm.response.to.have.jsonBody(\"[]\"); ",
+									"    pm.response.to.have.jsonBody({",
+									"    \"method\": \"GET\",",
+									"    \"employee\": {",
+									"        \"name\": \"Gregorie\",",
+									"        \"image\": \"/image/standarImage\",",
+									"        \"lastname\": \"House\",",
+									"        \"alias\": \"@House\",",
+									"        \"password\": 32,",
+									"        \"position\": \"designer\",",
+									"        \"inbox\": [",
+									"            {",
+									"                \"from\": \"@House\",",
+									"                \"to\": \"@House\",",
+									"                \"topic\": \"it sounds folky\",",
+									"                \"content\": \"a random theme from Dr. House\",",
+									"                \"state\": \"pendiente\",",
+									"                \"priority\": \"baja\"",
+									"            }",
+									"        ],",
+									"        \"outbox\": [",
+									"            {",
+									"                \"from\": \"@House\",",
+									"                \"to\": \"@House\",",
+									"                \"topic\": \"it sounds folky\",",
+									"                \"content\": \"a random theme from Dr. House\",",
+									"                \"state\": \"pendiente\",",
+									"                \"priority\": \"baja\"",
+									"            }",
+									"        ]",
+									"    }",
+									"});",
+									"    pm.response.to.not.have.jsonBody(\"error\"); ",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:9000/employee/employee=@House",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"employee",
+								"employee=@House"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get the inbox of a employee",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "32d43df8-9c40-4615-a9ad-b41b5a4b2798",
+								"exec": [
+									"pm.test(\"response should be okay to process\", function () { ",
+									"    pm.response.to.not.be.error; ",
+									"    //pm.response.to.have.jsonBody(\"[]\"); ",
+									"    pm.response.to.have.jsonBody({",
+									"    \"method\": \"GET\",",
+									"    \"inbox\": [",
+									"        {",
+									"            \"from\": \"@House\",",
+									"            \"topic\": \"it sounds folky\",",
+									"            \"priority\": \"baja\",",
+									"            \"state\": \"pendiente\"",
+									"        }",
+									"    ]",
+									"    });",
+									"    pm.response.to.not.have.jsonBody(\"error\"); ",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:9000/employee/employee=@House/inbox",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"employee",
+								"employee=@House",
+								"inbox"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get the outbox of a employee",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e754ab61-74df-4b0c-b139-6f5364ecbcf7",
+								"exec": [
+									"pm.test(\"response should be okay to process\", function () { ",
+									"    pm.response.to.not.be.error; ",
+									"    //pm.response.to.have.jsonBody(\"[]\"); ",
+									"    pm.response.to.have.jsonBody({",
+									"    \"method\": \"GET\",",
+									"    \"outbox\": [",
+									"        {",
+									"            \"from\": \"@House\",",
+									"            \"topic\": \"it sounds folky\",",
+									"            \"priority\": \"baja\",",
+									"            \"state\": \"pendiente\"",
+									"        }",
+									"    ]",
+									"    });",
+									"    pm.response.to.not.have.jsonBody(\"error\"); ",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:9000/employee/employee=@House/outbox",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"employee",
+								"employee=@House",
+								"outbox"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get the N ticket from the inbox",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a42744be-ecb9-47e8-bccd-f605242ab60c",
+								"exec": [
+									"pm.test(\"response should be okay to process\", function () { ",
+									"    pm.response.to.not.be.error; ",
+									"    //pm.response.to.have.jsonBody(\"[]\"); ",
+									"    pm.response.to.have.jsonBody({",
+									"    \"method\": \"GET\",",
+									"    \"ticket\": {",
+									"        \"from\": \"@House\",",
+									"        \"to\": \"@House\",",
+									"        \"topic\": \"it sounds folky\",",
+									"        \"content\": \"a random theme from Dr. House\",",
+									"        \"state\": \"pendiente\",",
+									"        \"priority\": \"baja\"",
+									"    }",
+									"    });",
+									"    pm.response.to.not.have.jsonBody(\"error\"); ",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:9000/employee/employee=@House/inbox/ticket=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"employee",
+								"employee=@House",
+								"inbox",
+								"ticket=1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get the N ticket from the outbox",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6ce52ce6-a46f-483d-974d-a2b62889836d",
+								"exec": [
+									"pm.test(\"response should be okay to process\", function () { ",
+									"    pm.response.to.not.be.error; ",
+									"    //pm.response.to.have.jsonBody(\"[]\"); ",
+									"    pm.response.to.have.jsonBody({",
+									"    \"method\": \"GET\",",
+									"    \"ticket\": {",
+									"        \"from\": \"@House\",",
+									"        \"to\": \"@House\",",
+									"        \"topic\": \"it sounds folky\",",
+									"        \"content\": \"a random theme from Dr. House\",",
+									"        \"state\": \"pendiente\",",
+									"        \"priority\": \"baja\"",
+									"    }",
+									"    });",
+									"    pm.response.to.not.have.jsonBody(\"error\"); ",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:9000/employee/employee=@House/outbox/ticket=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"employee",
+								"employee=@House",
+								"outbox",
+								"ticket=1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change the state of a ticket in inbox",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "00aeeaf6-e182-4dbe-9e62-622495447525",
+								"exec": [
+									"pm.test(\"response should be okay to process\", function () { ",
+									"    pm.response.to.not.be.error; ",
+									"    //pm.response.to.have.jsonBody(\"[]\"); ",
+									"    pm.response.to.have.jsonBody({",
+									"    \"method\": \"GET\",",
+									"    \"ticket\": {",
+									"        \"from\": \"@House\",",
+									"        \"to\": \"@House\",",
+									"        \"topic\": \"it sounds folky\",",
+									"        \"content\": \"a random theme from Dr. House\",",
+									"        \"state\": \"approved\",",
+									"        \"priority\": \"baja\"",
+									"    }",
+									"    });",
+									"    pm.response.to.not.have.jsonBody(\"error\"); ",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"state\": \"approved\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9000/employee/employee=@House/inbox/state/ticket=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"employee",
+								"employee=@House",
+								"inbox",
+								"state",
+								"ticket=1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change the priority of a ticket in inbox",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a3b492b0-d2c6-4240-bf28-88530c508185",
+								"exec": [
+									"pm.test(\"response should be okay to process\", function () { ",
+									"    pm.response.to.not.be.error; ",
+									"    //pm.response.to.have.jsonBody(\"[]\"); ",
+									"    pm.response.to.have.jsonBody({",
+									"    \"method\": \"GET\",",
+									"    \"ticket\": {",
+									"        \"from\": \"@House\",",
+									"        \"to\": \"@House\",",
+									"        \"topic\": \"it sounds folky\",",
+									"        \"content\": \"a random theme from Dr. House\",",
+									"        \"state\": \"pendiente\",",
+									"        \"priority\": \"highest\"",
+									"    }",
+									"    });",
+									"    pm.response.to.not.have.jsonBody(\"error\"); ",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"priority\":\"highest\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9000/employee/employee=@House/inbox/priority/ticket=1/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"employee",
+								"employee=@House",
+								"inbox",
+								"priority",
+								"ticket=1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change the state of a ticket in outbox",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e37bce07-ab47-4c54-8dec-4bb740e2ff8a",
+								"exec": [
+									"pm.test(\"response should be okay to process\", function () { ",
+									"    pm.response.to.not.be.error; ",
+									"    //pm.response.to.have.jsonBody(\"[]\"); ",
+									"    pm.response.to.have.jsonBody({",
+									"    \"method\": \"GET\",",
+									"    \"ticket\": {",
+									"        \"from\": \"@House\",",
+									"        \"to\": \"@House\",",
+									"        \"topic\": \"it sounds folky\",",
+									"        \"content\": \"a random theme from Dr. House\",",
+									"        \"state\": \"pending\",",
+									"        \"priority\": \"baja\"",
+									"    }",
+									"    });",
+									"    pm.response.to.not.have.jsonBody(\"error\"); ",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"state\":\"pending\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9000/employee/employee=@House/outbox/state/ticket=1/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"employee",
+								"employee=@House",
+								"outbox",
+								"state",
+								"ticket=1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change the priority of a ticket in outbox",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ed89ccef-d435-4e92-a8cd-10fc8b0aac39",
+								"exec": [
+									"pm.test(\"response should be okay to process\", function () { ",
+									"    pm.response.to.not.be.error; ",
+									"    //pm.response.to.have.jsonBody(\"[]\"); ",
+									"    pm.response.to.have.jsonBody({",
+									"        \"method\": \"GET\",",
+									"    \"ticket\": {",
+									"        \"from\": \"@House\",",
+									"        \"to\": \"@House\",",
+									"        \"topic\": \"it sounds folky\",",
+									"        \"content\": \"a random theme from Dr. House\",",
+									"        \"state\": \"pendiente\",",
+									"        \"priority\": \"medium\"",
+									"    }",
+									"    });",
+									"    pm.response.to.not.have.jsonBody(\"error\"); ",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"priority\":\"medium\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9000/employee/employee=@House/outbox/priority/ticket=1/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"employee",
+								"employee=@House",
+								"outbox",
+								"priority",
+								"ticket=1",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "dacfb5a0-5791-4411-9b7b-1e7abcbb2c68",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "493442ab-e927-4378-8ab3-ddb028a1833c",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

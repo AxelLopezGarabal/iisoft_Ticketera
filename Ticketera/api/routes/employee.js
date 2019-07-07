@@ -21,11 +21,13 @@ router.get('/employee=:alias', (req, res, next) => {
 			message: 'there is no employee whith the alias' + param + ''
 		})
 	}
-	const employee = system.getEmployeeByAlias(param);
-	res.status(200).json({
-		method: 'GET',
-		employee: employee
-	});
+	else{
+		const employee = system.getEmployeeByAlias(param);
+		res.status(200).json({
+			method: 'GET',
+			employee: employee
+		});
+	}
 });
 
 router.get('/employee=:alias/inbox', (req, res, next) => {
@@ -36,11 +38,13 @@ router.get('/employee=:alias/inbox', (req, res, next) => {
 			message: 'there is no employee whith the alias' + param + ''
 		})
 	}
-	const inboxList = system.getInboxWithAlias(param);
-	res.status(200).json({
-		method: 'GET',
-		inbox: inboxList
-	});
+	else{
+		const inboxList = system.getInboxWithAlias(param);
+		res.status(200).json({
+			method: 'GET',
+			inbox: inboxList
+		});
+	}
 });
 
 

@@ -20,12 +20,15 @@ router.post('/registerEnterprise=:name', (req, res, next) => {
 			message: 'there is a enterprise whith the name ' + enterpriseName + ''
 		})
 	}
-	var newEnterprise = new enterpriseModule.Enterprise(enterpriseName);
-	system.registerEnterprise(newEnterprise);
-	res.status(200).json({
-		method: 'POST',
-		message: 'the enterprise has been add to the system'
-	})
+	else{
+		var newEnterprise = new enterpriseModule.Enterprise(enterpriseName);
+		system.registerEnterprise(newEnterprise);
+		res.status(200).json({
+			method: 'POST',
+			message: 'the enterprise has been add to the system'
+		})	
+	}
+	
 });
 
 router.post('/addEmployeeToEnterprise', (req, res, next) => {
