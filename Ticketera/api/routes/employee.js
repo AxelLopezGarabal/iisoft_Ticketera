@@ -238,4 +238,51 @@ router.put('/employee=:alias/outbox/priority/ticket=:nro', (req, res, next) => {
 	}
 });
 
+router.post('/employee=:alias/createWorkgroup', (req, res, next) => {
+	const paramAlias = req.params.alias;
+	const workgroupName = req.body.workgroupName;
+	const listOfAlias = req.body.members;
+	if(listOfAlias.length == 0){
+		res.status(404).json({
+			method: 'POST',
+			body: listOfAlias,
+			message: 'the list of members must have more then one member.'
+		});	
+	}
+	else{
+		if(!system.existEmployeeWithAlias(paramAlias)){
+			res.status(404).json({
+				method: 'POST',
+				message: 'there is no employee whith the alias' + paramAlias + ''
+			});
+		}
+		else{
+			const enterprise = system.getEnterpriseOfEmployeeWithAlias(paramAlias);
+			if(system.existWorkgroupWithName(workgroupName, enterprise.getName())){
+				res.status(404).json({
+					method: 'POST',
+					message: 'there is a workgroup whith the name ' + workgroupName + '.',
+				});
+			}
+			else{
+				if(!system.verifyEmployeesListed(listOfAlias)){
+					res.status(404).json({
+						method: 'POST',
+						message: 'there are employees listed that may not belong to the enterprise.'
+					});
+				}
+				else{
+					system.addWorkgroupToEnterpriseWithNameAndParams(enterprise.getName(), workgroupName);
+					system.addMembersToWorkgroupWithName(listOfAlias, workgroupName, enterprise.getName());
+					res.status(200).json({
+						method: 'POST',
+						message: 'the workgroup has been formed.',
+						enterprise: enterprise
+					});
+				}	
+			}	
+		}	
+	}
+});
+
 module.exports = router;

@@ -52,7 +52,47 @@ class System{
 		return enterprise.getWorkgroups();
 	}
 
+	existWorkgroupWithName(workgroupName, enterpriseName){
+		const listOfWorkgroups = this.getWorkgroupsFromEnterpriseWithName(enterpriseName);
+		let result = false;
+		for(var i=0; i < listOfWorkgroups.length; i++){
+			result = result || (workgroupName == listOfWorkgroups[i].getAlias());
+		}
+		return result
+	}
+
+	getWorkgroupByNameFromEnterpriseWithName(enterpriseName, workgroupName){
+		const groups = this.getEnterpriseByName(enterpriseName).getWorkgroups();
+		for(var i = 0; i < groups.length; i++){
+			if(groups[i].getAlias() == workgroupName){
+				return groups[i];
+			}
+		}
+	}
 	
+	addMembersToWorkgroupWithName(listOfMembers, workgroupName, enterpriseName){
+		let workgroup = this.getWorkgroupByNameFromEnterpriseWithName(enterpriseName, workgroupName);
+		for(var i=0; i < listOfMembers.length; i++){
+			workgroup.addMember(this.getEmployeeByAlias(listOfMembers[i]));
+		}
+	}
+
+	getEmployeesListed(listOfAlias){
+		const result = [];
+		for(var i=0; i < listOfAlias.length; i++){
+			result.push(this.getEmployeeByAlias(listOfAlias[i]));
+		}
+		return  result;
+	}
+
+	verifyEmployeesListed(listOfAlias){
+		let result = true;
+		for(var i=0; i < listOfAlias.length; i++){
+			result = result && this.existEmployeeWithAlias(listOfAlias[i]);
+		}
+		return  result;
+	}
+
 	//TODO: (enterpriseName, {params})
 	addEmployeeToEnterpriseWithNameAndParams(enterpriseName, name, lastname, alias, position, password){
 		const enterprise = this.getEnterpriseByName(enterpriseName);

@@ -211,7 +211,42 @@ describe('System - Tickets inbox & outbox', function() {
       assert.equal(system.verifyPasswordForEmployeeInEnterprise('testCo', '@anna', ' '), false);
     });
   });
-  /*
+
+  describe('#getEmployeesListed', function() {
+    it('should return the employees that are listed by their alias', function() {
+      const list = system.getEmployeesListed(['@anna']);
+      assert.equal(list.length, 1);
+      assert.equal(list[0].getAlias(), '@anna');
+    });
+  });
+
+  describe('#verifyEmployeesListed', function() {
+      it('should return true if the employees that are listed by their alias', function() {
+        assert.equal(system.verifyEmployeesListed(['@anna']), true);
+      });
+    });
+
+  describe('#getWorkgroupByNameFromEnterpriseWithName', function() {
+      it('should return true if the employees that are listed by their alias', function() {
+        assert.equal(system.getWorkgroupByNameFromEnterpriseWithName('testCo', '#devs').getAlias(), '#devs')
+      });
+    });
+
+  describe('#addMembersToWorkgroupWithName', function() {
+      it('should add a employee to the workgroup', function() {
+        system.addWorkgroupToEnterpriseWithNameAndParams('testCo', '#ATR');
+        system.addMembersToWorkgroupWithName(['@anna', '@ripo'], '#ATR', 'testCo');
+        assert.equal(system.getWorkgroupByNameFromEnterpriseWithName('testCo', '#ATR').members.length, 2);
+      });
+    });
+
+  describe('#existWorkgroupWithName', function() {
+      it('should return true if there is a enterprise with name', function() {
+        assert.equal(system.existWorkgroupWithName('#devs', 'testCo'), true);
+      });
+    });
+
+  /*existWorkgroupWithName
   FIXME: deberiamos testear las exceptions ante la busqueda de un empleado que no existe
     => las exepciones las maneja la API, la precondicion de los metodos que involucran encontrar algo es <<"ese algo existe">> 
   describe('#getInboxOfMemberWithAlias (employee)', function() {

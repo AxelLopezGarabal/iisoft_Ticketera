@@ -857,8 +857,103 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "create workgroup",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f6445427-b258-48e6-b7f5-9e91001bcb7b",
+								"exec": [
+									"pm.test(\"response should be okay to process\", function () { ",
+									"    pm.response.to.not.be.error; ",
+									"    //pm.response.to.have.jsonBody(\"[]\"); ",
+									"    pm.response.to.not.have.jsonBody(\"error\"); ",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"workgroupName\":\"#1Back\",\n\t\"members\":[\"@anna\",\"@marie\",\"@House\"]\n}"
+						},
+						"url": {
+							"raw": "http://localhost:9000/employee/employee=@House/createWorkgroup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"employee",
+								"employee=@House",
+								"createWorkgroup"
+							]
+						}
+					},
+					"response": []
 				}
 			]
+		},
+		{
+			"name": "logIn",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bb1f2237-ab4d-43b3-9275-2f93e04f6b8e",
+						"exec": [
+							"pm.test(\"response should be okay to process\", function () { ",
+							"    pm.response.to.not.be.error; ",
+							"    //pm.response.to.have.jsonBody(\"[]\"); ",
+							"    pm.response.to.not.have.jsonBody(\"error\"); ",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"enterpriseName\":\"Enron\",\n\t\"employeeAlias\":\"@marie\",\n\t\"employeePassword\":\"dios\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9000/login/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"login",
+						""
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"event": [
