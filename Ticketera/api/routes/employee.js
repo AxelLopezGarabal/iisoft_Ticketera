@@ -285,4 +285,22 @@ router.post('/employee=:alias/createWorkgroup', (req, res, next) => {
 	}
 });
 
+router.get('/employee=:alias/listWorkgroups', (req, res, next) => {
+	const paramAlias = req.params.alias;
+	if(!system.existEmployeeWithAlias(paramAlias)){
+		res.status(404).json({
+			method: 'GET',
+			message: 'there is no employee whith the alias' + paramAlias + ''
+		});
+	}
+	else{
+		const listOfGroups = system.getWorkgroupsOfEmployeeWithAlias(paramAlias);
+			res.status(200).json({
+				method: 'POST',
+				message: 'the list of workgroups of the employee.',
+				enterprise: listOfGroups
+		});
+	}
+});
+
 module.exports = router;

@@ -222,6 +222,11 @@ class System{
 		const member = this.getEmployeeByAlias(employeeAlias);
 		return member.verifyPassword(this.hasher.hashPassword(employeePassword));
 	}
+
+	getWorkgroupsOfEmployeeWithAlias(paramAlias){
+		const enterprise = this.getEnterpriseOfEmployeeWithAlias(paramAlias);
+		return enterprise.getWorkgroupsOfEmployeeWithAlias(paramAlias);
+	}
 }
 
 module.exports = {System};

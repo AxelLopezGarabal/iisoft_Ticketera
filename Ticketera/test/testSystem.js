@@ -246,16 +246,9 @@ describe('System - Tickets inbox & outbox', function() {
       });
     });
 
-  /*existWorkgroupWithName
-  FIXME: deberiamos testear las exceptions ante la busqueda de un empleado que no existe
-    => las exepciones las maneja la API, la precondicion de los metodos que involucran encontrar algo es <<"ese algo existe">> 
-  describe('#getInboxOfMemberWithAlias (employee)', function() {
-    it('should return the inbox of the member (employee) with that alias', function() {
-      
-      const inboxList = system.getInboxOfMemberWithAlias('testCo', '@marie');
-      
-      assert.equal(inboxList.length, 0);
+  describe('#getWorkgroupsOfEmployeeWithAlias', function() {
+      it('should return the list of Workgroups in wich belongs the employee', function() {
+        assert.equal(system.getWorkgroupsOfEmployeeWithAlias('@anna').length, 1);
+      });
     });
-  });
-*/
 });

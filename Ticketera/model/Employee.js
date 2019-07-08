@@ -82,10 +82,6 @@ class Employee{
 	getTicketNFromOutbox(index){
 		return this.outbox[index-1]
 	}
-//test
-	changeStateTicketToDone(ticket){
-		ticket.setState(4);
-	}
 
 	changeStateTicket(ticket, state){
 		ticket.setState(state);

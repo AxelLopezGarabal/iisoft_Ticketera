@@ -8,6 +8,7 @@ const workgroupModule = require('../model/Workgroup');
 
 const employee = new employeeModule.Employee("joel", "zimberman", "@Deadmau5", "producer");
 const workgroup = new workgroupModule.Workgroup("#grupo", undefined);
+workgroup.addMember(employee);
 
 const name = "Aerolineas Payaso";
 const enterprise = new enterpriseModule.Enterprise(name);
@@ -51,6 +52,14 @@ describe('Enterprise', function() {
             enterprise.addWorkgroup(workgroup),
             assert.equal(enterprise.getWorkgroups().length, 1);
             assert.equal(enterprise.getWorkgroups()[0], workgroup);
+        });
+    });
+
+    describe('#addWorkgroup(workgroup)', function() {
+        it('should add a workgroup to the enterprise', function() {
+            assert.equal(enterprise.getWorkgroupsOfEmployeeWithAlias('@Deadmau5').length, 1);
+            assert.equal(enterprise.getWorkgroupsOfEmployeeWithAlias('@Deadmau5')[0], workgroup);
+            assert.equal(enterprise.getWorkgroupsOfEmployeeWithAlias('@Ghost_Producer').length, 0);
         });
     });
 });

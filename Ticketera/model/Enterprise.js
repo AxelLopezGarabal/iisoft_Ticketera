@@ -87,6 +87,15 @@ class Enterprise{
 		}
 	}
 
+	getWorkgroupsOfEmployeeWithAlias(paramAlias){
+		let result = [];
+		for(var i=0; i < this.workgroups.length; i++){
+			if(this.workgroups[i].containsEmployeeWithAlias(paramAlias)){
+				result.push(this.workgroups[i]);
+			}
+		}
+		return result
+	}
 }
 
 module.exports = {Enterprise};
