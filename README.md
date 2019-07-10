@@ -42,3 +42,5 @@ En la carpeta Documentacion se hallan/colocaran todos los archivos correspondien
 [Sprint 4](Documentation/sprints/sprint4)
 
 [Sprint 5](Documentation/sprints/sprint5)
+
+[Sprint 6](Documentation/sprints/sprint6)
